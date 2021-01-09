@@ -1,0 +1,712 @@
+﻿@model FinalVersion.Models.MyViewModel
+
+@{
+    ViewBag.Title = "SuburbDetails_CN";
+    Layout = "~/Views/Shared/_Layout_CN.cshtml";
+}
+<style type="text/css">
+
+    body {
+        margin: 0;
+        font-family: "Montserrat", "Avenir";
+    }
+
+    a {
+        color: #e59524;
+    }
+
+    div {
+        font-size: 20px;
+        font-family: Microsoft YaHei
+    }
+
+    h4 {
+        font-weight: 900;
+        color: #0a053a;
+    }
+
+    div {
+        font-family: Microsoft YaHei
+    }
+
+    .square {
+        width: 30%;
+        background: purple;
+        padding-bottom: 30%;
+        float: left;
+        margin: 1.66%;
+        border-radius: 15%;
+        transition: background 0.6s;
+        -webkit-transition: background 0.6s;
+        -moz-transition: background 0.6s;
+    }
+
+    #container {
+        margin: 20px auto;
+        max-width: 600px;
+    }
+
+    h1 {
+        text-align: center;
+        line-height: 1.1;
+        font-weight: normal;
+        color: white;
+        background: steelblue;
+        margin: 0;
+        text-transform: uppercase;
+        padding: 20px 0;
+    }
+
+    #colorDisplay {
+        font-size: 200%;
+    }
+
+    #message {
+        display: inline-block;
+        width: 20%;
+    }
+
+    #stripe {
+        background: white;
+        height: 30px;
+        text-align: center;
+        color: black;
+    }
+
+    .selected {
+        color: white;
+        background: steelblue;
+    }
+
+
+
+    button {
+        border: none;
+        background: none;
+        text-transform: uppercase;
+        height: 100%;
+        font-weight: 700;
+        color: steelblue;
+        letter-spacing: 1px;
+        font-size: inherit;
+        transition: all 0.3s;
+        -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        outline: none;
+    }
+
+    .titles {
+        font-family: Museo-Sans-300;
+        font-size: 18px;
+        line-height: 28px;
+        text-align: center;
+        color: black;
+    }
+
+    button:hover {
+        color: white;
+        background: steelblue;
+    }
+    /*.sunsection{
+              display: inline-block;
+            width: 48%;
+            background-color: #ffffff;
+            border: 1px solid #eaeaea;
+            cursor: pointer;
+        }*/
+    .sub-header {
+        position: relative;
+        width: 100%;
+        display: block;
+        text-decoration: none;
+        padding-bottom: 50px;
+    }
+
+    .price {
+        font-size: 20px;
+        line-height: 38px;
+        text-align: center;
+        color: #ff7f66;
+    }
+
+    .title {
+        font-family: Museo-Sans-300;
+        font-size: 30px;
+        line-height: 40px;
+        text-align: center;
+        color: #ff7f66;
+    }
+
+    .pDate {
+        position: absolute;
+        width: 100%;
+        margin: 13px 2px 0 2px;
+        font-size: 12px;
+        line-height: 18px;
+        font-family: Museo-Sans-300;
+        color: #626b71;
+        text-align: center;
+    }
+
+    .sub-footer {
+        height: 95px;
+        width: 100%;
+        display: table;
+        background-color: #f3f3f3;
+    }
+
+    .footer-left {
+        border-top: 1px solid #e5e5e5;
+        border-right: 1px solid #e5e5e5;
+        width: 33%;
+    }
+
+    .footer-middle {
+        border-top: 1px solid #e5e5e5;
+        border-right: 1px solid #e5e5e5;
+        width: 33%;
+    }
+
+    .footer-right {
+        border-top: 1px solid #e5e5e5;
+        width: 33%;
+    }
+
+    .wholeSection {
+        width: 100%;
+        position: relative;
+        vertical-align: top;
+    }
+
+    .buy-sub {
+        display: inline-block;
+        width: 48%;
+        background-color: #ffffff;
+        border: 1px solid #eaeaea;
+        cursor: pointer;
+    }
+
+    .rent-sub {
+        display: inline-block;
+        width: 48%;
+        background-color: #ffffff;
+        border: 1px solid #eaeaea;
+        cursor: pointer;
+    }
+
+    .bd {
+        background-color: #f3f3f3;
+        display: table-cell;
+        vertical-align: middle;
+        height: 100%;
+        font-family: Helvetica;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+    .strongs {
+        font-family: Museo-Sans-500;
+        color: black;
+    }
+
+    .prices {
+        color: black;
+        text-align: center;
+    }
+
+    .smallFont {
+        font-size: 10px;
+    }
+
+    #map-canvas-1 {
+        width: 600px;
+        height: 300px;
+    }
+
+    p.hidden {
+        display: none;
+    }
+</style>
+
+@foreach (var item in Model.Housing_Details)
+{
+    <h1 style="text-align: center; font-weight: 900;">@Html.DisplayFor(modelItem => item.Suburb)</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 ">
+                <br />
+                <br />
+                <div class="mb-4">
+                    <text>选择你感兴趣的设施，它们将显示在地图上。</text>
+                    <br />
+                    <br />
+                    <div class="siderbarmap">
+                        <ul>
+                            <input id="monumentoCheckbox" type="checkbox" onclick="toggleGroup('supermarket')"></input>
+                            <text style="font-weight:bold">超市</text>
+                            <input id="museusCheckbox" type="checkbox" onclick="toggleGroup('park')"> </input>
+                            <text style="font-weight:bold">公园</text>
+                            <input id="restaurantesCheckbox" type="checkbox" onclick="toggleGroup('bus')"></input>
+                            <text style="font-weight:bold">公交站</text>
+                            <input id="hotelCheckbox" type="checkbox" onclick="toggleGroup('train')"></input>
+                            <text style="font-weight:bold">火车站</text>
+                            <input id="hotelCheckbox" type="checkbox" onclick="toggleGroup('tram')"></input>
+                            <text style="font-weight:bold">电车站</text>
+                        </ul>
+                    </div>
+                    <div id="map-canvas-1"></div>
+                </div>
+                <h4 class="h5 mb-4 text-black">平均买房/租房房价</h4>
+
+                <div class="w3-content" style="max-width:400px">
+                    <div class="mySlides sunsection">
+                        <div class="buy-sub">
+                            <div class="sub-header">
+                                <div class="title h2 strong">买房房价</div>
+                                <div class="price h1 strong">@Html.DisplayFor(modelItem => item.Buy_Price)</div>
+                            </div>
+                        </div>
+                        <div class="buy-sub">
+                            <div class="sub-header">
+                                <div class="title h2 strong" style="color:#6192e6;">两卧租金</div>
+                                <div class="price h1 strong" style="color:#6192e6;">@Html.DisplayFor(modelItem => item.Rent2br) 每周</div>
+                            </div>
+                            <div class="sub-footer">
+                                <!--  <div class="footer-left bd"><div class="titles h4"></div>
+                                   <div class="prices strong"></div></div> -->
+                                <div class="footer-middle bd">
+                                    <div class="titles h4">三卧租金</div>
+                                    <div class="prices strong smallFont">@Html.DisplayFor(modelItem => item.Rent3br)  每周</div>
+                                </div>
+                                <div class="footer-right bd">
+                                    <div class="titles h4">四卧租金</div>
+                                    <div class="prices strong smallFont">@Html.DisplayFor(modelItem => item.Rent4br)   每周</div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <br>
+                <br>
+                <a href="~/Home/EventSearch_CN/?Location=@(item.Suburb)">点击此处浏览该城区有趣的活动。</a>
+            </div>
+            <div class="col-lg-3 ml-auto">
+                <br />
+                <br />
+                <div class="mb-5">
+                    <h3 class="h5 text-black mb-3">位置</h3>
+                    <p>距墨尔本市中心 @Html.DisplayFor(modelItem => item.Distance) 公里</p>
+                </div>
+
+                <div class="mb-5">
+                    <h3 class="h5 text-black mb-3">平均租金每周（澳元）</h3>
+                    <p>@Html.DisplayFor(modelItem => item.RentAverageAll)</p>
+                </div>
+                <div class="mb-5">
+                    <h3 class="h5 text-black mb-3">超市数量</h3>
+                    <p>@Html.DisplayFor(modelItem => item.Supermarket_No)</p>
+                </div>
+                <div class="mb-5">
+                    <h3 class="h5 text-black mb-3">公园数量</h3>
+                    <p>@Html.DisplayFor(modelItem => item.Park_No)</p>
+                </div>
+                <div class="mb-5">
+                    <h3 class="h5 text-black mb-3">公交站数量</h3>
+                    <p>@Html.DisplayFor(modelItem => item.BusStop_No)</p>
+                </div>
+                <div class="mb-5">
+                    <h3 class="h5 text-black mb-3">电车站数量</h3>
+                    <p>@Html.DisplayFor(modelItem => item.Tram_No)</p>
+                </div>
+                <div class="mb-5">
+                    <h3 class="h5 text-black mb-3">火车站数量</h3>
+                    <p>@Html.DisplayFor(modelItem => item.Train_No)</p>
+                </div>
+                <p class="hidden" id="lat-1">@Html.DisplayFor(modelItem => item.Latitude)</p>
+                <p class="hidden" id="long-1">@Html.DisplayFor(modelItem => item.Longitude)</p>
+
+            </div>
+        </div>
+    </div>}
+<div class="conainer">
+    <div class="row">
+        <div class="col-lg-8 offset-md-2 offset-lg-2">
+
+            <h4 class="h5 mb-4 text-black" style="font-weight:bold;text-decoration:underline">学校</h4>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">名称</th>
+                        <th scope="col">地址</th>
+                        <th scope="col">网址</th>
+                        <th scope="col">评分</th>
+                        <th scope="col">电话</th>
+                    </tr>
+                </thead>
+                @if (ViewBag.SchoolNoResults == true)
+                {
+                    <tbody>
+                        <tr style="font-weight:bold"><td colspan="5">未找到此地区学校信息。</td></tr>
+                    </tbody>
+                }
+                @{int i = 1;}
+
+                @foreach (var item in Model.School_Details)
+                {
+
+                    <tbody>
+                        <tr>
+                            <th scope="row">@(i)</th>
+                            <td>@Html.DisplayFor(modelItem => item.School_Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Address)</td>
+                            <td><a href=@Html.DisplayFor(modelItem => item.URL)>链接</a></td>
+                            <td>@Html.DisplayFor(modelItem => item.Rating)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Phone_number)</td>
+                            @{ i++;}
+                        </tr>
+
+                    </tbody>
+                }
+            </table>
+        </div>
+        <br />
+
+
+        <div class="col-lg-8 offset-md-2 offset-lg-2">
+
+            <h4 class="h5 mb-4 text-black" style="font-weight:bold;text-decoration:underline">医院</h4>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">名称</th>
+                        <th scope="col">地址</th>
+                        <th scope="col">网址</th>
+                        <th scope="col">评分</th>
+                    </tr>
+                </thead>
+                @if (ViewBag.HospitalNoResults == true)
+                {
+                    <tbody>
+                        <tr style="font-weight:bold"><td colspan="5">未找到此地区医院信息。 </td></tr>
+                    </tbody>
+                }
+                @{int j = 1;}
+
+                @foreach (var item in Model.Hospital_Details)
+                {
+
+                    <tbody>
+                        <tr>
+                            <th scope="row">@(j)</th>
+                            <td>@Html.DisplayFor(modelItem => item.Hospital_Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Address)</td>
+                            <td><a href=@Html.DisplayFor(modelItem => item.URL)>链接</a></td>
+                            <td>@Html.DisplayFor(modelItem => item.Rating)</td>
+                            @{ j++;}
+                        </tr>
+
+                    </tbody>
+                }
+            </table>
+
+        </div>
+        <br />
+
+
+        <div class="col-lg-8 offset-md-2 offset-lg-2">
+
+            <h4 class="h5 mb-4 text-black" style="font-weight:bold;text-decoration:underline">中国诊所</h4>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">名称</th>
+                        <th scope="col">地址</th>
+                        <th scope="col">网址</th>
+                        <th scope="col">评分</th>
+                        <th scope="col">电话</th>
+                    </tr>
+                </thead>
+                @if (ViewBag.ClinicNoResults == true)
+                {
+                    <tbody>
+                        <tr style="font-weight:bold"><td colspan="5">未找到此地区中国诊所信息。 </td></tr>
+                    </tbody>
+                }
+
+                @{int k = 1;}
+
+                @foreach (var item in Model.Clinic_Details)
+                {
+
+
+                    <tbody>
+                        <tr>
+                            <th scope="row">@(k)</th>
+                            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Address)</td>
+                            <td><a href=@Html.DisplayFor(modelItem => item.Website)>链接</a></td>
+                            <td>@Html.DisplayFor(modelItem => item.Rating)</td>
+                            <td>@Html.DisplayFor(modelItem => item.ContactNumber)</td>
+                            @{k++;}
+                        </tr>
+
+                    </tbody>
+                }
+            </table>
+        </div>
+
+        <div class="col-lg-8 offset-md-2 offset-lg-2" style="margin-bottom:100px;">
+
+            <h4 class="h5 mb-4 text-black" style="font-weight:bold;text-decoration:underline">中国社区</h4>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">名称</th>
+                        <th scope="col">地址</th>
+                        <th scope="col">网址</th>
+                        <th scope="col">评分</th>
+                        <th scope="col">电话</th>
+                    </tr>
+                </thead>
+                @if (ViewBag.CommunityNoResults == true)
+                {
+                    <tbody>
+                        <tr style="font-weight:bold"><td colspan="5">未找到此地区中国社区信息。</td></tr>
+                    </tbody>
+                }
+                @{int l = 1;}
+
+                @foreach (var item in Model.Community_Details)
+                {
+
+                    <tbody>
+                        <tr>
+                            <th scope="row">@(l)</th>
+                            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Address)</td>
+                            <td><a href=@Html.DisplayFor(modelItem => item.Website)>链接</a></td>
+                            <td>@Html.DisplayFor(modelItem => item.Rating)</td>
+                            <td>@Html.DisplayFor(modelItem => item.ContactNumber)</td>
+                            @{ l++;}
+                        </tr>
+
+                    </tbody>
+                }
+            </table>
+        </div>
+        </div>
+        <script type="text/javascript">
+
+    var supermarket_lat = [];
+    var supermarket_long = [];
+    var park_lat = [];
+    var park_long = [];
+    var bus_lat = [];
+    var bus_long = [];
+    var train_lat = [];
+    var train_long = [];
+    var tram_lat = [];
+    var tram_long = [];
+    var supermarket_name = [];
+    var park_name = [];
+    var bus_name = [];
+    var train_name = [];
+    var tram_name = [];
+
+    @foreach (var d in Model.Supermarket_Details)
+    {
+        @:supermarket_lat.push("@d.Latitude");
+        @:supermarket_long.push("@d.Longitude");
+        @:supermarket_name.push("@d.Name");
+    }
+    @foreach (var d in Model.Park_Details)
+    {
+        @:park_lat.push("@d.Latitude");
+        @:park_long.push("@d.Longitude");
+        @:park_name.push("@d.Name");
+    }
+    @foreach (var d in Model.Bus_Details)
+    {
+        @:bus_lat.push("@d.Latitude");
+        @:bus_long.push("@d.Longitude");
+        @:bus_name.push("@d.Name");
+    }
+    @foreach (var d in Model.Train_Details)
+    {
+        @:train_lat.push("@d.Latitude");
+        @:train_long.push("@d.Longitude");
+        @:train_name.push("@d.Name");
+    }
+    @foreach (var d in Model.Tram_Details)
+    {
+        @:tram_lat.push("@d.Latitude");
+        @:tram_long.push("@d.Longitude");
+        @:tram_name.push("@d.Name");
+    }
+
+        </script>
+    </div>
+
+    <script type="text/javascript">
+        var slideIndex = 1;
+        showDivs(slideIndex);
+
+        function plusDivs(n) {
+            showDivs(slideIndex += n);
+        }
+
+        function currentDiv(n) {
+            showDivs(slideIndex = n);
+        }
+
+        function showDivs(n) {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("demo");
+            if (n > x.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = x.length }
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" w3-red", "");
+            }
+            x[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " w3-red";
+        }
+    </script>
+    <script type="text/javascript">
+        var latvalue1 = document.getElementById('lat-1').innerText;
+        var longvalue1 = document.getElementById('long-1').innerText;
+        //function initMap() {
+        //    var directionsDisplay1 = new google.maps.DirectionsRenderer;
+        //    var directionsService1 = new google.maps.DirectionsService;
+        //    var map = new google.maps.Map(document.getElementById('map-canvas-1'), {
+        //        zoom: 8,
+        //        center: { lat: parseFloat(latvalue1), lng: parseFloat(longvalue1) },
+        //        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        //        disableDefaultUI: true
+        //    });
+
+        //    var infowindow = new google.maps.InfoWindow({
+        //        content: ''
+        //    });
+
+        //    directionsDisplay1 = new google.maps.DirectionsRenderer({
+        //        draggable: false,
+        //        map: map,
+        //        markerOptions: {
+        //            draggable: false
+        //        },
+        //        panel: document.getElementById("directionsPanel"),
+        //        infoWindow: infowindow
+        //    });
+
+        //    var request = {
+        //        origin: new google.maps.LatLng(parseFloat(latvalue1), parseFloat(longvalue1)),
+        //        destination: new google.maps.LatLng(-37.814, 144.96332),
+        //        travelMode: 'DRIVING',
+        //        unitSystem: google.maps.UnitSystem.IMPERIAL
+        //    };
+
+        //    directionsService1.route(request, function (result, status) {
+        //        if (status == google.maps.DirectionsStatus.OK) {
+        //            directionsDisplay1.setDirections(result);
+        //        }
+        //    });
+        //}
+        let map;
+        var markerGroups = {
+            "supermarket": [],
+            "park": [],
+            "bus": [],
+            "train": [],
+            "tram": []
+        };
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map-canvas-1'), {
+                zoom: 13,
+                center: { lat: parseFloat(latvalue1), lng: parseFloat(longvalue1) },
+                //mapTypeId: google.maps.MapTypeId.ROADMAP,
+                //disableDefaultUI: true
+            });
+            for (var i = 0; i < supermarket_lat.length; i++) {
+                console.log("In Supermarket" + parseFloat(supermarket_lat[i]));
+                addMarker({ lat: parseFloat(supermarket_lat[i]), lng: parseFloat(supermarket_long[i]) }, "yellow", "supermarket", supermarket_name[i]);
+            }
+            for (var i = 0; i < park_lat.length; i++) {
+                addMarker({ lat: parseFloat(park_lat[i]), lng: parseFloat(park_long[i]) }, "green", "park", park_name[i]);
+            }
+            for (var i = 0; i < bus_lat.length; i++) {
+                addMarker({ lat: parseFloat(bus_lat[i]), lng: parseFloat(bus_long[i]) }, "blue", "bus", bus_name[i]);
+            }
+            for (var i = 0; i < train_lat.length; i++) {
+                addMarker({ lat: parseFloat(train_lat[i]), lng: parseFloat(train_long[i]) }, "red", "train", train_name[i]);
+            }
+            for (var i = 0; i < tram_lat.length; i++) {
+                addMarker({ lat: parseFloat(tram_lat[i]), lng: parseFloat(tram_long[i]) }, "orange", "tram", tram_name[i]);
+            }
+        }
+        var lastOpenedInfoWindow = new google.maps.InfoWindow();
+
+        function addMarker(latLng, color, type, title) {
+            let url = "http://maps.google.com/mapfiles/ms/icons/";
+            url += color + "-dot.png";
+            //contentString
+            //var infowindow = new google.maps.InfoWindow({
+            //    content: contentString
+            //});
+            var marker = new google.maps.Marker({
+                map: map,
+                position: latLng,
+                type: type,
+                title: title,
+                icon: {
+                    url: url
+                }
+            });
+            //marker.addListener('click', function () {
+            //    infowindow.open(map, marker);
+            //});
+            marker.setVisible(false);
+            markerGroups[type].push(marker);
+            var infoWindow = new google.maps.InfoWindow();
+            var html = "<b>" + title + "</b> <br/>";
+            google.maps.event.addListener(marker, 'click', function () {
+                closeLastOpenedInfoWindow();
+                infoWindow.setContent(html);
+                infoWindow.open(map, marker);
+                lastOpenedInfoWindow = infoWindow;
+            });
+            //return marker;
+        }
+        function closeLastOpenedInfoWindow() {
+            if (lastOpenedInfoWindow) {
+                lastOpenedInfoWindow.close();
+            }
+        }
+
+        //function bindInfoWindow(marker, map, infoWindow, html) {
+
+        //}
+
+        function toggleGroup(type) {
+            for (var i = 0; i < markerGroups[type].length; i++) {
+                var marker = markerGroups[type][i];
+                if (!marker.getVisible()) {
+                    marker.setVisible(true);
+                } else {
+                    marker.setVisible(false);
+                }
+            }
+            map.setCenter({ lat: parseFloat(latvalue1), lng: parseFloat(longvalue1) });
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCMnGA9JfBmHGj8DQcq_87WZbM9BzDDuk&callback=initMap">
+    </script>

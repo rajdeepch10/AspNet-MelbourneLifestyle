@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="loveandlive3" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\Raj\\source\\repos\\FinalVersion\\FinalVersion\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\Raj\\source\\repos\\FinalVersion\\FinalVersion\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="Add write permission to App_Data Folder" description="Add write permission to App_Data folder" value="loveandlive3/App_Data" tags="Hidden">
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\Raj\\source\\repos\\FinalVersion\\FinalVersion\\obj\\Release\\Package\\PackageTmp\\App_Data$" />
+  </parameter>
+  <parameter name="NewestModels-Web.config Connection String" description="" value="Data Source=tcp:fit5120dbserver.database.windows.net,1433;Initial Catalog=loveandliveFinal3_db;User Id=rajdeep@fit5120dbserver;Password=Password123" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Raj\\source\\repos\\FinalVersion\\FinalVersion\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='NewestModels']/@connectionString" />
+  </parameter>
+</parameters>

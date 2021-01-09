@@ -1,0 +1,255 @@
+﻿@model IEnumerable<FinalVersion.Models.Housing_Results>
+
+@{
+    ViewBag.Title = "ResultsA_CN";
+    Layout = "~/Views/Shared/_Layout_CN.cshtml";
+}
+
+
+<style>
+    #map-canvas-1 {
+        width: 300px;
+        height: 300px;
+    }
+
+    #map-canvas-2 {
+        width: 300px;
+        height: 300px;
+    }
+
+    #map-canvas-3 {
+        width: 300px;
+        height: 300px;
+    }
+
+    p.hidden {
+        display: none;
+    }
+
+    p {
+        font-size: 20px;
+        font-family: Microsoft YaHei
+    }
+</style>
+<div class="site-section bg-light">
+    <div class="container">
+        <div class="row">
+            @if (ViewBag.noresults == true)
+            {
+                <p>没找到符合条件的活动，请更换条件后重试。</p>
+                <a href="~/Home/Place">点击此处重试</a>
+            }
+            @{int i = 1;}
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4" data-aos="fade" data-aos-delay="100">
+
+                    <div class="p-4 mb-3 bg-white">
+                        <div id="map-canvas-@(i)"></div>
+                        <p class="mb-4 font-weight-bold" id="sub-@(i)">@Html.DisplayFor(modelItem => item.Suburb)</p>
+                        <p class="mb-0 font-weight-bold">距市中心距离</p>
+                        <p class="mb-4"><i class="fas fa-location-arrow"></i> @Html.DisplayFor(modelItem => item.Distance) km from Melbourne</p>
+                        <p class="mb-0 font-weight-bold">中小学数量</p>
+                        <p class="mb-0"><i class="fas fa-school"></i> @Html.DisplayFor(modelItem => item.SchoolNo)</p>
+                        <p class="mb-0 font-weight-bold">火车站数量</p>
+                        <p class="mb-0"><i class="fas fa-train"></i> @Html.DisplayFor(modelItem => item.Train_No)</p>
+                        <p class="mb-0 font-weight-bold">电车站数量</p>
+                        <p class="mb-0"><i class="fas fa-tram"></i> @Html.DisplayFor(modelItem => item.Tram_No)</p>
+                        <p class="mb-0 font-weight-bold">公交站数量</p>
+                        <p class="mb-0"><i class="fas fa-bus-alt"></i> @Html.DisplayFor(modelItem => item.BusStop_No)</p>
+                        <p class="mb-0 font-weight-bold">公园数量</p>
+                        <p class="mb-0"><i class="fas fa-tree"></i> @Html.DisplayFor(modelItem => item.ParkNo)</p>
+                        <p class="mb-0 font-weight-bold">超市数量</p>
+                        <p class="mb-0"><i class="fas fa-shopping-cart"></i> @Html.DisplayFor(modelItem => item.SupermarketNo)</p>
+                        <p class="hidden" id="lat-@(i)">@Html.DisplayFor(modelItem => item.Latitude)</p>
+                        <p class="hidden" id="long-@(i)">@Html.DisplayFor(modelItem => item.Longitude)</p>
+                        <p></p>
+
+                        <br />
+                        <p><a href="~/Housings/SuburbDetails_CN/?Suburb=" id="link-@(i)" class="btn btn-primary px-4 py-2 text-white" style="background-color:steelblue; border-color: steelblue;">了解更多</a></p>
+                        @{i++;}
+                    </div>
+
+                </div>
+            }
+            @*<div class="col-md-4" data-aos="fade" data-aos-delay="100">
+                    <div class="p-4 mb-3 bg-white">
+                        <p class="mb-0 font-weight-bold">Suburb</p>
+                        <p class="mb-4">Clayton</p>
+                        <p class="mb-0 font-weight-bold">Location </p>
+                        <p class="mb-4">19 km (12 mi) from Melbourne</p>
+                        <p class="mb-0 font-weight-bold">Postal Code</p>
+                        <p class="mb-0">VIC 3166</p>
+                        <br>
+
+                        <p><a href="./listings-single.html" class="btn btn-primary px-4 py-2 text-white" style="background-color:steelblue; border-color: steelblue;">Learn More</a></p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade" data-aos-delay="100">
+
+                    <div class="p-4 mb-3 bg-white">
+                        <p class="mb-0 font-weight-bold">Suburb</p>
+                        <p class="mb-4">Clayton</p>
+                        <p class="mb-0 font-weight-bold">Location </p>
+                        <p class="mb-4">19 km (12 mi) from Melbourne</p>
+                        <p class="mb-0 font-weight-bold">Postal Code</p>
+                        <p class="mb-0">VIC 3166</p>
+                        <br>
+
+
+                        <p><a href="./listings-single.html" class="btn btn-primary px-4 py-2 text-white" style="background-color:steelblue; border-color: steelblue;">Learn More</a></p>
+                    </div>
+                </div>*@
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+
+    // This example creates a 2-pixel-wide red polyline showing the path of
+    // the first trans-Pacific flight between Oakland, CA, and Brisbane,
+    // Australia which was made by Charles Kingsford Smith.
+    if (document.getElementById('lat-1') != null && document.getElementById('long-1') != null) {
+        var latvalue1 = document.getElementById('lat-1').innerText;
+        var longvalue1 = document.getElementById('long-1').innerText;
+    }
+    if (document.getElementById('lat-2') != null && document.getElementById('long-2') != null) {
+        var latvalue2 = document.getElementById('lat-2').innerText.trim();
+        var longvalue2 = document.getElementById('long-2').innerText;
+    }
+    if (document.getElementById('lat-3') != null && document.getElementById('long-3') != null) {
+        var latvalue3 = document.getElementById('lat-3').innerText;
+        var longvalue3 = document.getElementById('long-3').innerText;
+    }
+    document.getElementById('link-1').setAttribute('href', document.getElementById('link-1').getAttribute("href") + document.getElementById('sub-1').innerText);
+    document.getElementById('link-2').setAttribute('href', document.getElementById('link-2').getAttribute("href") + document.getElementById('sub-2').innerText);
+    document.getElementById('link-3').setAttribute('href', document.getElementById('link-3').getAttribute("href") + document.getElementById('sub-3').innerText);
+    function initMap() {
+        var directionsDisplay1 = new google.maps.DirectionsRenderer;
+        var directionsService1 = new google.maps.DirectionsService;
+        var directionsDisplay2 = new google.maps.DirectionsRenderer;
+        var directionsService2 = new google.maps.DirectionsService;
+        var directionsDisplay3 = new google.maps.DirectionsRenderer;
+        var directionsService3 = new google.maps.DirectionsService;
+        var map = new google.maps.Map(document.getElementById('map-canvas-1'), {
+            zoom: 8,
+            center: { lat: parseFloat(latvalue1), lng: parseFloat(longvalue1) },
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            disableDefaultUI: true
+        });
+
+        //var flightPlanCoordinates = [
+        //    { lat: -37.814, lng: 144.96332 },
+        //    { lat: parseFloat(latvalue1), lng: parseFloat(longvalue1) }
+        //];
+        //console.log(latvalue1);
+        //console.log(longvalue1);
+        //var flightPath = new google.maps.Polyline({
+        //    path: route,
+        //    geodesic: true,
+        //    strokeColor: '#FF0000',
+        //    strokeOpacity: 1.0,
+        //    strokeWeight: 2
+        //});
+
+        //flightPath.setMap(map);
+        var infowindow = new google.maps.InfoWindow({
+            content: ''
+        });
+
+        directionsDisplay1 = new google.maps.DirectionsRenderer({
+            draggable: false,
+            map: map,
+            markerOptions: {
+                draggable: false
+            },
+            panel: document.getElementById("directionsPanel"),
+            infoWindow: infowindow
+        });
+
+        var request = {
+            origin: new google.maps.LatLng(parseFloat(latvalue1), parseFloat(longvalue1)),
+            destination: new google.maps.LatLng(-37.814, 144.96332),
+            travelMode: 'DRIVING',
+            unitSystem: google.maps.UnitSystem.IMPERIAL
+        };
+
+        directionsService1.route(request, function (result, status) {
+            if (status == google.maps.DirectionsStatus.OK) {
+                directionsDisplay1.setDirections(result);
+            }
+        });
+        if (latvalue2 != null && longvalue2 != null) {
+            var map2 = new google.maps.Map(document.getElementById('map-canvas-2'), {
+                zoom: 8,
+                center: { lat: parseFloat(latvalue2), lng: parseFloat(longvalue2) },
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                disableDefaultUI: true
+            });
+            var infowindow = new google.maps.InfoWindow({
+                content: ''
+            });
+
+            directionsDisplay2 = new google.maps.DirectionsRenderer({
+                draggable: false,
+                map: map2,
+                markerOptions: {
+                    draggable: false
+                },
+                panel: document.getElementById("directionsPanel"),
+                infoWindow: infowindow
+            });
+
+            var request2 = {
+                origin: new google.maps.LatLng(parseFloat(latvalue2), parseFloat(longvalue2)),
+                destination: new google.maps.LatLng(-37.814, 144.96332),
+                travelMode: 'DRIVING',
+                unitSystem: google.maps.UnitSystem.IMPERIAL
+            };
+
+            directionsService2.route(request2, function (result, status) {
+                if (status == google.maps.DirectionsStatus.OK) {
+                    directionsDisplay2.setDirections(result);
+                }
+            });
+
+        }
+        if (latvalue3 != null && longvalue3 != null) {
+            var map3 = new google.maps.Map(document.getElementById('map-canvas-3'), {
+                zoom: 8,
+                center: { lat: parseFloat(latvalue3), lng: parseFloat(longvalue3) },
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                disableDefaultUI: true
+            });
+
+            var infowindow = new google.maps.InfoWindow({
+                content: ''
+            });
+
+            directionsDisplay3 = new google.maps.DirectionsRenderer({
+                draggable: false,
+                map: map3,
+                markerOptions: {
+                    draggable: false
+                },
+                panel: document.getElementById("directionsPanel"),
+                infoWindow: infowindow
+            });
+
+            var request3 = {
+                origin: new google.maps.LatLng(parseFloat(latvalue3), parseFloat(longvalue3)),
+                destination: new google.maps.LatLng(-37.814, 144.96332),
+                travelMode: 'DRIVING',
+                unitSystem: google.maps.UnitSystem.IMPERIAL
+            };
+
+            directionsService3.route(request3, function (result, status) {
+                if (status == google.maps.DirectionsStatus.OK) {
+                    directionsDisplay3.setDirections(result);
+                }
+            });
+        }
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCMnGA9JfBmHGj8DQcq_87WZbM9BzDDuk&callback=initMap">
+</script>

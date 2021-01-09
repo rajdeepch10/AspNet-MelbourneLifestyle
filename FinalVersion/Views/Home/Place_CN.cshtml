@@ -1,0 +1,254 @@
+﻿
+@{
+    ViewBag.Title = "Place_CN";
+    Layout = "~/Views/Shared/_Layout_CN.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en" style="margin:0;
+   padding:0;
+   height:100%;">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Team 404</title>
+
+    <link rel="icon" href="./img/core-img/favicon.png">
+
+
+</head>
+
+<body>
+
+
+    <div class="container">
+
+
+
+        <div class="col-12 col-lg-12" align="center">
+            <div class="hotel-reservation--area mb-100">
+                @using (Html.BeginForm("Place_CN", "Home"))
+                {
+
+
+                    <div class="form-group mb-30">
+                        <label for="guests" style=" font-size: 20px; font-family: Microsoft YaHei"><h4>发现最适合你的城区</h4></label>
+                        <div class="row">
+                            <div class="col-12" align="left" style="float :left ;padding-left: 20%;font-size: 15px; font-family: Microsoft YaHei">
+                                <ul>
+                                    <p>请选择以下筛选条件对你的重要程度</p>
+                                    @*<li>@Html.CheckBox("Blanks[0]", false) Education - Choose this if you want easy access to schools.</li>
+                                        <li>@Html.CheckBox("Blanks[1]", false) Security -  We already consider security while making a recommedation, choose it if you need us to give it more priority.</li>
+                                        <li>@Html.CheckBox("Blanks[2]", false) Price - Choose this if you want to live in an afforadable suburb.</li>
+                                        <li>@Html.CheckBox("Blanks[3]", false) Hospital - Choose this if you need easy access to hospitals.</li>*@
+                                    <li>
+                                        临近中小学
+                                        <span class="rating" style="float:right;padding-right:25%;">
+                                            @*<input id="rating5" type="radio" name="rating" value="5">*@
+                                            @Html.RadioButton("School", 30, false, new { id = "rating5" })
+                                            <label for="rating5">5</label>
+                                            @Html.RadioButton("School", 20, false, new { id = "rating4" })
+                                            <label for="rating4">4</label>
+                                            @Html.RadioButton("School", 15, false, new { id = "rating3" })
+                                            <label for="rating3">3</label>
+                                            @Html.RadioButton("School", 10, false, new { id = "rating2" })
+                                            <label for="rating2">2</label>
+                                            @Html.RadioButton("School", 1, false, new { id = "rating1" })
+                                            <label for="rating1">1</label>
+                                        </span>
+                                    </li>
+                                    <p></p>
+                                    <li>
+                                        安全（低犯罪率）
+                                        <span class="rating" style="float:right;padding-right:25%;">
+                                            @Html.RadioButton("Crime", 20, false, new { id = "rating6" })
+                                            <label for="rating6">5</label>
+                                            @Html.RadioButton("Crime", 15, false, new { id = "rating7" })
+                                            <label for="rating7">4</label>
+                                            @Html.RadioButton("Crime", 10, false, new { id = "rating8" })
+                                            <label for="rating8">3</label>
+                                            @Html.RadioButton("Crime", 2, false, new { id = "rating9" })
+                                            <label for="rating9">2</label>
+                                            @Html.RadioButton("Crime", 1, false, new { id = "rating10" })
+                                            <label for="rating10">1</label>
+                                        </span>
+                                    </li>
+                                    <p></p>
+                                    <li style="">
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                便宜的房租 - 选择卧室数量 -
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <select name="bedroom" id="bedroom" style="position:relative;">
+                                                    <option value="2">双卧</option>
+                                                    <option value="3">三卧</option>
+                                                    <option value="4">四卧</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <span class="rating" style="float:right;padding-right:25%;">
+                                                    @Html.RadioButton("Rent", 50, false, new { id = "rating11" })
+                                                    <label for="rating11">5</label>
+                                                    @Html.RadioButton("Rent", 40, false, new { id = "rating12" })
+                                                    <label for="rating12">4</label>
+                                                    @Html.RadioButton("Rent", 30, false, new { id = "rating13" })
+                                                    <label for="rating13">3</label>
+                                                    @Html.RadioButton("Rent", 20, false, new { id = "rating14" })
+                                                    <label for="rating14">2</label>
+                                                    @Html.RadioButton("Rent", 10, false, new { id = "rating15" })
+                                                    <label for="rating15">1</label>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <p></p>
+                                    <li>
+                                        临近医院
+                                        <span class="rating" style="float:right;padding-right:25%;">
+                                            @Html.RadioButton("Hospital", 20, false, new { id = "rating16" })
+                                            <label for="rating16">5</label>
+                                            @Html.RadioButton("Hospital", 15, false, new { id = "rating17" })
+                                            <label for="rating17">4</label>
+                                            @Html.RadioButton("Hospital", 11, false, new { id = "rating18" })
+                                            <label for="rating18">3</label>
+                                            @Html.RadioButton("Hospital", 10, false, new { id = "rating19" })
+                                            <label for="rating19">2</label>
+                                            @Html.RadioButton("Hospital", 5, false, new { id = "rating20" })
+                                            <label for="rating20">1</label>
+                                        </span>
+                                    </li>
+                                    <p></p>
+                                    <li>
+                                        临近市中心
+                                        <span class="rating" style="float:right;padding-right:25%;">
+                                            @Html.RadioButton("Distance", 60, false, new { id = "rating21" })
+                                            <label for="rating21">5</label>
+                                            @Html.RadioButton("Distance", 50, false, new { id = "rating22" })
+                                            <label for="rating22">4</label>
+                                            @Html.RadioButton("Distance", 40, false, new { id = "rating23" })
+                                            <label for="rating23">3</label>
+                                            @Html.RadioButton("Distance", 20, false, new { id = "rating24" })
+                                            <label for="rating24">2</label>
+                                            @Html.RadioButton("Distance", 10, false, new { id = "rating25" })
+                                            <label for="rating25">1</label>
+                                        </span>
+                                    </li>
+                                    <p></p>
+                                    <li>
+                                        便捷的公共交通
+                                        <span class="rating" style="float:right;padding-right:25%;">
+                                            @Html.RadioButton("Station", 30, false, new { id = "rating26" })
+                                            <label for="rating26">5</label>
+                                            @Html.RadioButton("Station", 20, false, new { id = "rating27" })
+                                            <label for="rating27">4</label>
+                                            @Html.RadioButton("Station", 15, false, new { id = "rating28" })
+                                            <label for="rating28">3</label>
+                                            @Html.RadioButton("Station", 10, false, new { id = "rating29" })
+                                            <label for="rating29">2</label>
+                                            @Html.RadioButton("Station", 5, false, new { id = "rating30" })
+                                            <label for="rating30">1</label>
+                                        </span>
+                                    </li>
+                                    <p></p>
+                                    <li>
+                                        临近超市
+                                        <span class="rating" style="float:right;padding-right:25%;">
+                                            @Html.RadioButton("Supermarket", 30, false, new { id = "rating31" })
+                                            <label for="rating31">5</label>
+                                            @Html.RadioButton("Supermarket", 20, false, new { id = "rating32" })
+                                            <label for="rating32">4</label>
+                                            @Html.RadioButton("Supermarket", 15, false, new { id = "rating33" })
+                                            <label for="rating33">3</label>
+                                            @Html.RadioButton("Supermarket", 10, false, new { id = "rating34" })
+                                            <label for="rating34">2</label>
+                                            @Html.RadioButton("Supermarket", 5, false, new { id = "rating35" })
+                                            <label for="rating35">1</label>
+                                        </span>
+                                    </li>
+                                    <p></p>
+                                    <li>
+                                        临近公园
+                                        <span class="rating" style="float:right;padding-right:25%;">
+                                            @Html.RadioButton("Parks", 30, false, new { id = "rating36" })
+                                            <label for="rating36">5</label>
+                                            @Html.RadioButton("Parks", 20, false, new { id = "rating37" })
+                                            <label for="rating37">4</label>
+                                            @Html.RadioButton("Parks", 15, false, new { id = "rating38" })
+                                            <label for="rating38">3</label>
+                                            @Html.RadioButton("Parks", 10, false, new { id = "rating39" })
+                                            <label for="rating39">2</label>
+                                            @Html.RadioButton("Parks", 5, false, new { id = "rating40" })
+                                            <label for="rating40">1</label>
+                                        </span>
+                                    </li>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <li>
+                                        <div class="row">
+                                            <div class="col-lg-7">
+                                                中国邻居数量
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <select name="population" id="population" style="position:static;z-index:20">
+                                                    <option value="None">不在意</option>
+                                                    <option value="Low">少许</option>
+                                                    <option value="Medium">适中</option>
+                                                    <option value="High">多</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <p></p>
+                                    <p></p>
+                                    <li style="font-weight:bold;">更多选项：</li>
+                                    <li>
+                                        <p>
+                                            你需要居住在中国诊所多的地区吗？<br />
+                                            @Html.RadioButton("Clinics", "Yes") 是的 &nbsp;&nbsp;&nbsp;&nbsp;
+                                            @Html.RadioButton("Clinics", "No") 不在意
+                                        </p>
+                                    </li>
+                                    <li>
+                                        你想住在临近中国社区的地区吗？<br />
+                                        @Html.RadioButton("Communities", "Yes") 是的 &nbsp;&nbsp;&nbsp;&nbsp;
+                                        @Html.RadioButton("Communities", "No") 不在意
+                                    </li>
+                                </ul>
+
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" style=" font-size: 20px; font-family: Microsoft YaHei">
+                        <input type="submit" class="btn roberto-btn w-100" style="max-width:100px;" align="center" value="提交" />
+                        <input type="submit" class="btn" align="center" value="跳过" />
+                    </div>
+
+                }
+
+
+            </div>
+        </div>
+    </div>
+<br/>
+    <script type="text/javascript">
+        $('#rating3').attr('checked', true);
+        $('#rating8').attr('checked', true);
+        $('#rating13').attr('checked', true);
+        $('#rating18').attr('checked', true);
+        $('#rating23').attr('checked', true);
+        $('#rating28').attr('checked', true);
+        $('#rating33').attr('checked', true);
+        $('#rating38').attr('checked', true);
+    </script>
+
+</body>
+
+</html>
+

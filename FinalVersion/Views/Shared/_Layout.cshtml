@@ -1,0 +1,292 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - IE Project</title>
+    @*@Styles.Render("~/Content/css")*@
+    <link rel="stylesheet" href="~/Content/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700|Work+Sans:300,400,700" rel="stylesheet">
+    <!--<link rel="stylesheet" href="fonts/icomoon/style.css">-->
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/magnific-popup.css">
+    <link rel="stylesheet" href="~/Content/jquery-ui.css">
+    <link rel="stylesheet" href="~/Content/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Content/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/Content/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="~/Content/animate.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/mediaelementplayer.min.css">
+    <script src='https://static-assets.mapbox.com/gl-pricing/dist/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.2.0/mapbox-gl-geocoder.min.js'></script>
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.2.0/mapbox-gl-geocoder.css' type='text/css' />
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.0/mapbox-gl-directions.js'></script>
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.0/mapbox-gl-directions.css' type='text/css' />
+    <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.2.0/leaflet-omnivore.min.js'></script>
+    @*<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">*@
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800" rel="stylesheet">
+    <link rel="stylesheet" href="~/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="~/fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="~/Content/rangeslider.css">
+    <link rel="stylesheet" href="~/Content/aos.css">
+    <link rel="stylesheet" href="~/Content/awesomplete.css" />
+    <script src="~/Scripts/awesomplete.js" async></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|PT+Serif|Raleway|Roboto+Mono|Varela+Round" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    @*<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>*@
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    @Scripts.Render("~/bundles/modernizr")
+    <style type="text/css">
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 30px;
+            height: 17px;
+        }
+
+            /* Hide default HTML checkbox */
+            .switch input {
+                opacity: 0;
+                width: 0;
+                height: 0;
+            }
+
+        /* The slider */
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+            .slider:before {
+                position: absolute;
+                content: "";
+                height: 13px;
+                width: 13px;
+                left: 2px;
+                bottom: 2px;
+                background-color: white;
+                -webkit-transition: .4s;
+                transition: .4s;
+            }
+
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+
+        input:focus + .slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+
+        input:checked + .slider:before {
+            -webkit-transform: translateX(13px);
+            -ms-transform: translateX(13px);
+            transform: translateX(13px);
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+            border-radius: 10px;
+        }
+
+            .slider.round:before {
+                border-radius: 50%;
+            }
+    </style>
+</head>
+<body>
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+    <header class="header-area">
+        @*<div class="search-form d-flex align-items-center">
+                <div class="container">
+                    <form action="index.html" method="get">
+                        <input type="search" name="search-form-input" id="searchFormInput" placeholder="Type your keyword ...">
+                        <button type="submit"><i class="icon_search"></i></button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="top-header-area">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-6">
+                            <div class="top-header-content">
+                                <a href="#"><i class="icon_phone"></i> <span>(61) 415707891</span></a>
+                                <a href="#"><i class="icon_mail"></i> <span>bliu0006@student.monash.edu</span></a>
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="top-header-content">
+                                <div class="top-social-area ml-auto">
+                                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                    <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                    <a href="#"><i class="fa fa-tripadvisor" aria-hidden="true"></i></a>
+                                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>*@
+        <div class="main-header-area">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <nav class="classy-navbar justify-content-between" id="robertoNav">
+                        <a class="nav-brand" href="@Url.Action("Index","Home")"><img src="~/images/newLogo2.png" style="max-width:170px;max-height:100px" alt=""></a>
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+                        <div class="classy-menu">
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+                            <div class="classynav">
+                                <ul id="nav">
+                                    <li class="active"><a href=@Url.Action("Index","Home") title="Test" style="text-decoration:underline;background-color:#fff;">Home</a></li>
+                                    <li><a href=@Url.Action("Checklist","Home") title="Checklist of things to know and prepare" style="text-decoration:underline">Checklist</a></li>
+                                    <li><a href=@Url.Action("Place","Home") title="Find Ideal Suburb to live in" style="text-decoration:underline">Explore Suburbs</a></li>
+                                    <li><a href=@Url.Action("Events","Home") title="Find interesting events to attend" style="text-decoration:underline">Find Events</a></li>
+                                    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+                                    <li title="Redirects to English Home Page">English</li>
+                                    <li>
+                                        @using (Html.BeginForm("Index_CN", "Home"))
+                                        {
+                                            <label class="switch" style="margin-top:10px;">
+                                                <input type="checkbox" onchange="this.form.submit()">
+                                                <span class="slider round"></span>
+                                            </label>
+                                        }
+                                    </li>
+                                    <li title="如果切换语言，将重新导回主页" sstyle="font-family: Microsoft YaHei">中文</li>
+                                    @*<li><a href=@Url.Action("Place","Home")>News</a></li>*@
+                                    @*<li><a href="./contact.html">Contact</a></li>*@
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    @RenderBody()
+    <footer class="footer-area" style="position:fixed;bottom:0;width:100%;margin-top:100px;">
+        @*<div class="main-footer-area">
+                <div class="container">
+                    <div class="row align-items-baseline justify-content-between">
+                        <div class="col-12 col-sm-6 col-lg-3">
+                            <div class="single-footer-widget mb-80">
+                                <a href="#" class="footer-logo">Team 404</a>
+
+                                <h4>+61 415707891</h4>
+                                <span>liubaiyang9@gmail.com</span>
+                                <span>Monash University</span>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-sm-6 col-lg-3">
+                            <div class="single-footer-widget mb-80">
+                                <h5 class="widget-title">Our Blog</h5>
+
+                                <div class="latest-blog-area">
+                                    <a href="#" class="post-title">Freelance Design Tricks How</a>
+                                    <span class="post-date"><i class="fa fa-clock-o" aria-hidden="true"></i> Jan 02, 2019</span>
+                                </div>
+
+                                <div class="latest-blog-area">
+                                    <a href="#" class="post-title">Free Advertising For Your Online</a>
+                                    <span class="post-date"><i class="fa fa-clock-o" aria-hidden="true"></i> Jan 02, 2019</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-sm-4 col-lg-2">
+                            <div class="single-footer-widget mb-80">
+                                <h5 class="widget-title">Links</h5>
+
+                                <ul class="footer-nav">
+                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> About Us</a></li>
+                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> Our Room</a></li>
+                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> Career</a></li>
+                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> FAQs</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-sm-8 col-lg-4">
+                            <div class="single-footer-widget mb-80">
+                                <h5 class="widget-title">Subscribe Newsletter</h5>
+                                <span>Subscribe our newsletter gor get notification about new updates.</span>
+
+                                <form action="index.html" class="nl-form">
+                                    <input type="email" class="form-control" placeholder="Enter your email...">
+                                    <button type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+        <div class="container">
+            <div class="copywrite-content">
+                <div class="row align-items-center">
+                    <div class="col-12 col-md-8">
+                        <div class="copywrite-text">
+                            <p>
+                                @*Copyright &copy;
+                                    <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with Team 404</a>*@
+                                Disclaimer : The data used on this website is not updated frequently. Some of the recommendations can be out of date.
+                            </p>
+                        </div>
+                    </div>
+                    @*<div class="col-12 col-md-4">
+                            <div class="social-info">
+                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                            </div>
+                        </div>*@
+                </div>
+            </div>
+        </div>
+    </footer>
+    @Scripts.Render("~/bundles/jquery")
+    <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")" type="text/javascript"></script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="/Scripts/jquery.min.js"></script>
+    <script src="/Scripts/popper.min.js"></script>
+    <script src="/Scripts/bootstrap.min.js"></script>
+    <script src="/Scripts/roberto.bundle.js"></script>
+    <script src="/Scripts/default-assets/active.js"></script>
+    <script src="/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="/Scripts/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/Scripts/jquery-ui.js"></script>
+    <script src="/Scripts/popper.min.js"></script>
+    <script src="/Scripts/bootstrap.min.js"></script>
+    <script src="/Scripts/owl.carousel.min.js"></script>
+    <script src="/Scripts/jquery.stellar.min.js"></script>
+    <script src="/Scripts/jquery.countdown.min.js"></script>
+    <script src="/Scripts/jquery.magnific-popup.min.js"></script>
+    <script src="/Scripts/bootstrap-datepicker.min.js"></script>
+    <script src="/Scripts/aos.js"></script>
+    <script src="/Scripts/main.js"></script>
+    <script src="~/Scripts/rangeslider.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

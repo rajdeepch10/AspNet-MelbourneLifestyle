@@ -1,0 +1,502 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout_CN.cshtml";
+}
+<link rel="stylesheet" href="~/Content/style1.css">
+
+
+<style type="text/css">
+    .input::-webkit-calendar-picker-indicator {
+        display: none;
+    }
+
+    .form-search-wrap {
+        background: #1e0a3c;
+        width: 100%;
+        border-radius: 0px;
+        padding: 20px;
+    }
+
+    p {
+        margin-top: 0;
+        margin-bottom: 1rem;
+        color: white;
+        font-size: 25px;
+        font-family: Microsoft YaHei;
+    }
+
+    .form-control {
+        height: 43px;
+        border-radius: 0;
+    }
+
+    .btn-primary {
+        color: #212529;
+        background-color: #30e3ca;
+        border-color: #30e3ca;
+    }
+
+    h1 {
+        color: white;
+    }
+
+    .stealth {
+        color: #1e0a3c;
+    }
+
+    .textDefine {
+        padding-top: 80px;
+        font-weight: 300;
+    }
+
+    .textLa {
+        font-size: 2.5rem;
+        line-height: 3.0rem;
+        letter-spacing: .75px;
+        margin-right: -.75px;
+        font-weight: 1000;
+    }
+
+    h3 {
+        color: #1e0a3c;
+    }
+
+    h4 {
+        font-size: 20px;
+        font-family: Microsoft YaHei;
+    }
+
+    div {
+        font-size: 15px;
+        font-family: Microsoft YaHei;
+    }
+
+    .form-control {
+        border-color: #1e0a3c;
+        position: sticky;
+    }
+
+    option {
+        font-size: 15px;
+        font-family: Microsoft YaHei；
+    }
+
+    .little {
+        font-size: 1rem;
+        line-height: 2rem;
+        letter-spacing: .75px;
+        margin-right: -.75px;
+        font-weight: 300;
+    }
+
+    .fontColor {
+        color: #d1410c;
+    }
+
+    .ptx {
+        color: #1e0a3c;
+    }
+
+    .modal-content {
+        background-color: #f5f4de;
+    }
+
+    .modal-header {
+        border-bottom: 1px solid #202529;
+    }
+
+    .modal-footer {
+        border-top: 1px solid #202529;
+    }
+
+    .btn-success {
+        color: #212529;
+        background-color: #fff;
+        border-color: #fff;
+    }
+
+    .site-wrap {
+        max-width: 1500px;
+    }
+
+    .form-search-wrap {
+        width: 80%;
+    }
+
+    .stealthPe {
+        color: #1e0a3c;
+    }
+</style>
+<script type="text/javascript">
+    $(window).load(function () {
+        if (sessionStorage.getItem('popupshown') !== 'yes' && sessionStorage.getItem('popupshown') == null) {
+            $('#myModal').modal('show');
+            console.log("In here 2");
+        }
+
+        if (sessionStorage.getItem('popupshown') == 'yes') {
+            console.log("In here");
+            var script = document.createElement('script');
+            script.src = '../../Scripts/events_cn.js';
+            var head = document.getElementsByTagName("head")[0];
+            head.appendChild(script);
+        }
+
+    });
+    $('#myModal').data('bs.modal').$backdrop.css('background-color', 'orange');
+    function modalfunction() {
+        var modalcategories = "";
+        if (document.getElementById("scales-1").checked) { modalcategories = modalcategories.concat(document.getElementById("scales-1").value, ","); }
+        if (document.getElementById("scales-2").checked) { modalcategories = modalcategories.concat(document.getElementById("scales-2").value, ","); }
+        if (document.getElementById("scales-3").checked) { modalcategories = modalcategories.concat(document.getElementById("scales-3").value, ","); }
+        if (document.getElementById("scales-4").checked) { modalcategories = modalcategories.concat(document.getElementById("scales-4").value, ","); }
+        if (document.getElementById("scales-5").checked) { modalcategories = modalcategories.concat(document.getElementById("scales-5").value); }
+        var modalarray = modalcategories.split(',');
+        var modalcategories1 = "";
+        for (var i = 0; i < modalarray.length; i++) {
+            if (modalarray[i] != "" && i != modalarray.length - 1) {
+                modalcategories1 = modalcategories1 + "" + modalarray[i] + ",";
+            }
+            if (modalarray[i] != "" && i == modalarray.length - 1) {
+                modalcategories1 = modalcategories1 + "" + modalarray[i];
+                console.log(modalarray[i]);
+            }
+        }
+        modalcategories1 = modalcategories1.replace(/,\s*$/, "");
+        console.log(modalcategories1);
+        sessionStorage.setItem('modalstuff', modalcategories1);
+        console.log(sessionStorage.getItem('modalstuff'));
+        sessionStorage.setItem('popupshown', 'yes');
+        $('#myModal').modal('hide');
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = '../../Scripts/events_cn.js';
+        document.getElementsByTagName('head')[0].appendChild(script);
+
+        //modalcategories = modalcategories.concat(document.getElementById("scales-1"), ",", document.getElementById("scales-2"), ",", document.getElementById("scales-3"), ",", document.getElementById("scales-4"), ",", document.getElementById("scales-5"));
+        //$('#part_number-modal').on('hidden.bs.modal', function (e) {
+        //    // do something...
+        //})
+
+    }
+
+    function closefunction() {
+        sessionStorage.setItem('popupshown', 'yes');
+        $('#myModal').modal('hide');
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = '../../Scripts/events_cn.js';
+        document.getElementsByTagName('head')[0].appendChild(script);
+    }
+
+</script>
+<div class="modal fade" class="colorFor" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel">选择你偏好的活动类型，我们会为你推荐最适合你的活动</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <input type="checkbox" id="scales-1" name="scales" value="115"
+                               checked>
+                        <label for="scales">家庭教育</label>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="checkbox" id="scales-2" name="scales" value="104">
+                        <label for="scales">影视媒体</label>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="checkbox" id="scales-3" name="scales" value="120">
+                        <label for="scales">校园活动</label>
+                    </div>
+
+
+                    <div class="form-group">
+                        <input type="checkbox" id="scales-4" name="scales" value="108">
+                        <label for="scales">运动健身</label>
+                    </div>
+
+
+                    <div class="form-group">
+                        <input type="checkbox" id="scales-5" name="scales" value="109">
+                        <label for="scales">旅行户外</label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal" onclick="closefunction()">关闭</button>
+                <button type="button" class="btn btn-success" onclick="modalfunction()">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@*<header class="header-area">
+        <div class="main-header-area">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <nav class="classy-navbar justify-content-between" id="robertoNav">
+                        <a class="nav-brand" href="@Url.Action("Index","Home")"><img src="images/newLogo.png" style="max-width:150px;max-height:120px" alt=""></a>
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+                        <div class="classy-menu">
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+                            <div class="classynav">
+                                <ul id="nav">
+                                    <li><a href="./index.html">Event</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>*@
+<div class="site-wrap" style="position:relative;z-index:2;">
+
+    <div style="background-image: url(../../images/smallb.jpeg); background-size: 100% 100%; height: 500px">
+        <div id="bgcolor" class="form-search-wrap" data-aos="fade-up" data-aos-delay="200" style="position:absolute;top:350px;left:135px;">
+            @using (Html.BeginForm("EventSearch_CN", "Home", FormMethod.Post, new { enctype = "multipart/form-data", onsubmit = "return validateForm()" }))
+            {<div class="row align-items-center" id="myview1">
+                    <div class="col-lg-12 mb-4 mb-xl-0 col-xl-3 bgmchange">
+                        <p align="left">时间</p>
+                        <div class="select-wrap">
+                            <div class="col-auto dates">
+                                @*<input type="date" id="start" name="trip-start" value="01-01-2019" min="2019-01-01" max="2019-12-31">*@
+                                <input class="date-picker rounded" name="datePicker" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 mb-4 mb-xl-0 col-xl-3">
+                        <p align="left">地点</p>
+                        <div class="wrap-icon">
+                            @*<span class="icon icon-room"></span>*@
+                            <input style="width:250px;font-size: 15px; font-family: Microsoft YaHei " type="text" class="form-control rounded moreWidth" name="Location" id="suburbs" placeholder="输入邮编或城区">
+                        </div>
+
+                    </div>
+                    <div class="col-lg-12 mb-4 mb-xl-0 col-xl-3">
+                        <p align="left">活动类型</p>
+                        <div class="select-wrap">
+                            @*<span class="icon"><span class="icon-keyboard_arrow_down"></span></span>*@
+                            <select style="font-size: 15px; font-family: Microsoft YaHei " class="form-control rounded" name="categories" id="categories">
+                                <option value="115">家庭教育</option>
+                                <option value="104">影视媒体</option>
+                                <option value="120">校园活动</option>
+                                <option value="108">运动健身</option>
+                                <option value="109">旅行户外</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-xl-2 ml-auto text-right">
+                        <P class="stealthPe">.     </P>
+                        <input style="background-color:#d1410c; color:#fff; border-color:#d1410c; font-size: 20px; font-family: Microsoft YaHei" type="submit" class="btn btn-primary btn-block rounded" value="搜 索">
+                    </div>
+
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<br />
+@*<div class="row rowChange">
+
+        <div class="col-lg-4 col-sm-6 pink"><h1>Live for your life</h1></div>
+        <div class="col-lg-8 col-sm-6 pink">
+            <div class="row anotherRow">
+                <div class="col-auto dates">
+                    <input type="date" id="start" name="trip-start" value="01-01-2019" min="2019-01-01" max="2019-12-31">
+                </div>
+                <div class="col-auto my">
+                    <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
+                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                        <option selected>Pick a Category</option>
+                        <option value="1">Sports</option>
+                        <option value="2">Music</option>
+                        <option value="3">Atrs</option>
+                        <option value="4">Fashion</option>
+                        <option value="5">Health</option>
+                        <option value="6">Business</option>
+                        <option value="7">Family & Education</option>
+                        <option value="8">Home & Lifestyle</option>
+                        <option value="9">Others</option>
+                    </select>
+                </div>
+                <div class="col-auto my">
+                    <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
+                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                        <option selected class="erpColor">Choose free or not</option>
+                        <option value="1">Free only</option>
+                        <option value="2">Not Free</option>
+                        <option value="3">Both</option>
+                    </select>
+                </div>
+
+            </div>
+        </div>
+    </div>*@
+
+<div class="site-wrap" style="position:relative;z-index: 1;">
+    <div class="site-section" id="myview">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    @using (Html.BeginForm("EventDesc_CN", "Home"))
+                    {
+                        <div class="row" style="position:relative;z-index:1;" id="test2">
+                            @*<div class="col-lg-4 bigger">
+                                    <div class="d-block d-md-flex listing vertical">
+                                        <a href="javascript:void(0)" class="img d-block" style="background-image: url('../../images/2.png')" id="imageid-1"></a>
+                                        <div class="lh-content">
+                                            <span class="category" id="category-1">Jun 7</span>
+                                            <a href="./listings-single.html" class="bookmark"><span class="icon-heart"></span></a>
+                                            <h3><a href="javascript:void(0)" id="name-1">Racing World Kart</a></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 bigger">
+                                    <div class="d-block d-md-flex listing vertical">
+                                        <a href="javascript:void(0)" class="img d-block" style="background-image: url('../../images/2.png')" id="imageid-2"></a>
+                                        <div class="lh-content">
+                                            <span class="category" id="category-2">Jun 7</span>
+                                            <a href="./listings-single.html" class="bookmark"><span class="icon-heart"></span></a>
+                                            <h3><a href="javascript:void(0)" id="name-2">Racing World Kart</a></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 bigger">
+                                    <div class="d-block d-md-flex listing vertical">
+                                        <a href="javascript:void(0)" class="img d-block" style="background-image: url('../../images/2.png')" id="imageid-3"></a>
+                                        <div class="lh-content">
+                                            <span class="category" id="category-3">Jun 7</span>
+                                            <a href="./listings-single.html" class="bookmark"><span class="icon-heart"></span></a>
+                                            <h3><a href="javascript:void(0)" id="name-3">Racing World Kart</a></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 bigger">
+                                    <div class="d-block d-md-flex listing vertical">
+                                        <a href="javascript:void(0)" class="img d-block" style="background-image: url('../../images/2.png')" id="imageid-4"></a>
+                                        <div class="lh-content">
+                                            <span class="category" id="category-4">Jun 7</span>
+                                            <a href="./listings-single.html" class="bookmark"><span class="icon-heart"></span></a>
+                                            <h3><a href="javascript:void(0)" id="name-4">Racing World Kart</a></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 bigger">
+                                    <div class="d-block d-md-flex listing vertical">
+                                        <a href="javascript:void(0)" class="img d-block" style="background-image: url('../../images/2.png')" id="imageid-5"></a>
+                                        <div class="lh-content">
+                                            <span class="category" id="category-5">Jun 7</span>
+                                            <a href="./listings-single.html" class="bookmark"><span class="icon-heart"></span></a>
+                                            <h3><a href="javascript:void(0)" id="name-5">Racing World Kart</a></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 bigger">
+                                    <div class="d-block d-md-flex listing vertical">
+                                        <a href="javascript:void(0)" class="img d-block" style="background-image: url('../../images/2.png')" id="imageid-6"></a>
+                                        <div class="lh-content">
+                                            <span class="category" id="category-6">Jun 7</span>
+                                            <a href="./listings-single.html" class="bookmark"><span class="icon-heart"></span></a>
+                                            <h3><a href="javascript:void(0)" id="name-6">Racing World Kart</a></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 bigger">
+                                    <div class="d-block d-md-flex listing vertical">
+                                        <a href="javascript:void(0)" class="img d-block" style="background-image: url('../../images/2.png')" id="imageid-7"></a>
+                                        <div class="lh-content">
+                                            <span class="category" id="category-7">Jun 7</span>
+                                            <a href="./listings-single.html" class="bookmark"><span class="icon-heart"></span></a>
+                                            <h3><a href="javascript:void(0)" id="name-7">Racing World Kart</a></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 bigger">
+                                    <div class="d-block d-md-flex listing vertical">
+                                        <a href="javascript:void(0)" class="img d-block" style="background-image: url('../../images/2.png')" id="imageid-8"></a>
+                                        <div class="lh-content">
+                                            <span class="category" id="category-8">Jun 7</span>
+                                            <a href="./listings-single.html" class="bookmark"><span class="icon-heart"></span></a>
+                                            <h3><a href="javascript:void(0)" id="name-8">Racing World Kart</a></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 bigger">
+                                    <div class="d-block d-md-flex listing vertical">
+                                        <a href="javascript:void(0)" class="img d-block" style="background-image: url('../../images/2.png')" id="imageid-9"></a>
+                                        <div class="lh-content">
+                                            <span class="category" id="category-9">Jun 7</span>
+                                            <a href="javascript:void(0)" class="bookmark"><span class="icon-heart"></span></a>
+                                            <h3><a href="javascript:void(0)" id="name-9">Racing World Kart</a></h3>
+                                        </div>
+                                    </div>
+                                </div>*@
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="card" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div> -->
+@*@Scripts.Render("~/Scripts/events.js")*@
+@*<script type="text/javascript" src="../../"></script>*@
+@section Scripts {
+    <script>
+        $(window).on('load', function () {
+            $(".date-picker").datepicker({
+                dateFormat: 'dd-M-yy'
+            });
+            function mySortFunc(text, input) {
+                return text > input;
+            }
+
+            var input = document.getElementById("suburbs");
+            var awesomplete = new Awesomplete(input, {
+
+                sort: mySortFunc,
+                minChars: 1,
+                autoFirst: true,
+                maxItems: 5
+
+            });
+            awesomplete.list = ['Abbotsford', 'Albanvale', 'Albert Park', 'Albion', 'Alexandra', 'Alfredton', 'Alphington', 'Altona', 'Altona Meadows', 'Ardeer', 'Armadale', 'Ascot Vale', 'Ashburton', 'Ashwood', 'Aspendale', 'Aspendale Gardens', 'Avondale Heights', 'Bacchus Marsh', 'Ballan', 'Balwyn', 'Bannockburn', 'Barwon Heads', 'Baxter', 'Bayswater', 'Beaconsfield', 'Beaumaris', 'Belgrave', 'Belmont', 'Bentleigh', 'Berwick', 'Beveridge', 'Bittern', 'Black Rock', 'Blackburn', 'Bonbeach', 'Boronia', 'Box Hill', 'Braybrook', 'Brighton', 'Broadford', 'Broadmeadows', 'Brunswick', 'Bulleen', 'Bundoora', 'Buninyong', 'Burwood', 'Cairnlea', 'Camberwell', 'Campbellfield', 'Canterbury', 'Carlton', 'Carnegie', 'Caroline Springs', 'Carrum Downs', 'Castlemaine', 'Caulfield', 'Chadstone', 'Chelsea', 'Chelsea Heights', 'Cheltenham', 'Clarinda', 'Clayton', 'Clifton Hill', 'Clyde', 'Coburg', 'Collingwood', 'Corio', 'Cowes', 'Craigieburn', 'Cranbourne', 'Creswick', 'Crib Point', 'Croydon', 'Dallas', 'Dandenong', 'Daylesford', 'Deer Park', 'Delacombe', 'Delahey', 'Diamond Creek', 'Diggers Rest', 'Dingley Village', 'Doncaster', 'Donvale', 'Doreen', 'Doveton', 'Dromana', 'Drouin', 'Drysdale', 'Edithvale', 'Elsternwick', 'Eltham', 'Elwood', 'Emerald', 'Endeavour Hills', 'Epping', 'Essendon', 'Euroa', 'Fairfield', 'Fawkner', 'Ferntree Gully', 'Fitzroy', 'Flemington', 'Footscray', 'Forest Hill', 'Frankston', 'Geelong', 'Gisborne', 'Gladstone Park', 'Glen Huntly', 'Glen Iris', 'Glen Waverley', 'Glenroy', 'Greensborough', 'Greenvale', 'Grovedale', 'Hadfield', 'Hallam', 'Hamlyn Heights', 'Hampton Park', 'Hastings', 'Hawthorn', 'Healesville', 'Heathcote', 'Heathmont', 'Heidelberg', 'Herne Hill', 'Highett', 'Highton', 'Hoppers Crossing', 'Hughesdale', 'Hurstbridge', 'Inverloch', 'Ivanhoe', 'Kangaroo Flat', 'Kealba', 'Keilor', 'Keilor Downs', 'Kensington', 'Kew', 'Keysborough', 'Kilmore', 'Kilsyth', 'Kings Park', 'Kingsbury', 'Kingsville', 'Knoxfield', 'Koo Wee Rup', 'Korumburra', 'Kyneton', 'Lake Wendouree', 'Lalor', 'Lancefield', 'Langwarrin', 'Lara', 'Laverton', 'Leongatha', 'Leopold', 'Lilydale', 'Longwarry', 'Lower Plenty', 'Lynbrook', 'Lysterfield', 'Macleod', 'Malvern', 'Maribyrnong', 'Mckinnon', 'Meadow Heights', 'Melton', 'Mentone', 'Mernda', 'Mickleham', 'Middle Park', 'Mill Park', 'Mitcham', 'Moe', 'Mont Albert', 'Montmorency', 'Montrose', 'Moonee Ponds', 'Moorabbin', 'Mooroolbark', 'Mordialloc', 'Mornington', 'Mount Clear', 'Mount Eliza', 'Mount Evelyn', 'Mount Martha', 'Mount Waverley', 'Mulgrave', 'Murrumbeena', 'Nagambie', 'Narre Warren', 'Newborough', 'Newcomb', 'Newport', 'Niddrie', 'Noble Park', 'North Melbourne', 'Nunawading', 'Oak Park', 'Oakleigh', 'Ocean Grove', 'Officer', 'Ormond', 'Pakenham', 'Parkdale', 'Parkville', 'Pascoe Vale', 'Patterson Lakes', 'Pearcedale', 'Point Cook', 'Port Melbourne', 'Portarlington', 'Preston', 'Princes Hill', 'Quarry Hill', 'Redan', 'Reservoir', 'Richmond', 'Ringwood', 'Romsey', 'Rosanna', 'Rosebud', 'Rowville', 'Roxburgh Park', 'Rye', 'Sandringham', 'Scoresby', 'Seabrook', 'Seaford', 'Sebastopol', 'Seymour', 'Somerville', 'Sorrento', 'South Melbourne', 'Spotswood', 'Springvale', 'St Albans', 'St Kilda', 'St Leonards', 'Strathdale', 'Strathmore', 'Sunbury', 'Surrey Hills', 'Sydenham', 'Tarneit', 'Taylors Hill', 'Taylors Lakes', 'Templestowe', 'Templestowe Lower', 'Oakleigh East', 'The Basin', 'Thomastown', 'Thornbury', 'Toorak', 'Torquay', 'Trafalgar', 'Travancore', 'Tullamarine', 'Tyabb', 'Upper Ferntree Gully', 'Upwey', 'Vermont', 'Viewbank', 'Wallan', 'Wantirna', 'Warburton', 'Warragul', 'Warrandyte', 'Watsonia', 'Wendouree', 'Werribee', 'West Melbourne', 'Wheelers Hill', 'Whittington', 'Whittlesea', 'Williamstown', 'Winchelsea', 'Windsor', 'Wonthaggi', 'Woodend', 'Yallambie', 'Yarragon', 'Yarraville'];
+        });
+        function validateForm() {
+            var list = ['', 'Melbourne', 'Abbotsford', 'Albanvale', 'Albert Park', 'Albion', 'Alexandra', 'Alfredton', 'Alphington', 'Altona', 'Altona Meadows', 'Ardeer', 'Armadale', 'Ascot Vale', 'Ashburton', 'Ashwood', 'Aspendale', 'Aspendale Gardens', 'Avondale Heights', 'Bacchus Marsh', 'Ballan', 'Balwyn', 'Bannockburn', 'Barwon Heads', 'Baxter', 'Bayswater', 'Beaconsfield', 'Beaumaris', 'Belgrave', 'Belmont', 'Bentleigh', 'Berwick', 'Beveridge', 'Bittern', 'Black Rock', 'Blackburn', 'Bonbeach', 'Boronia', 'Box Hill', 'Braybrook', 'Brighton', 'Broadford', 'Broadmeadows', 'Brunswick', 'Bulleen', 'Bundoora', 'Buninyong', 'Burwood', 'Cairnlea', 'Camberwell', 'Campbellfield', 'Canterbury', 'Carlton', 'Carnegie', 'Caroline Springs', 'Carrum Downs', 'Castlemaine', 'Caulfield', 'Chadstone', 'Chelsea', 'Chelsea Heights', 'Cheltenham', 'Clarinda', 'Clayton', 'Clifton Hill', 'Clyde', 'Coburg', 'Collingwood', 'Corio', 'Cowes', 'Craigieburn', 'Cranbourne', 'Creswick', 'Crib Point', 'Croydon', 'Dallas', 'Dandenong', 'Daylesford', 'Deer Park', 'Delacombe', 'Delahey', 'Diamond Creek', 'Diggers Rest', 'Dingley Village', 'Doncaster', 'Donvale', 'Doreen', 'Doveton', 'Dromana', 'Drouin', 'Drysdale', 'Edithvale', 'Elsternwick', 'Eltham', 'Elwood', 'Emerald', 'Endeavour Hills', 'Epping', 'Essendon', 'Euroa', 'Fairfield', 'Fawkner', 'Ferntree Gully', 'Fitzroy', 'Flemington', 'Footscray', 'Forest Hill', 'Frankston', 'Geelong', 'Gisborne', 'Gladstone Park', 'Glen Huntly', 'Glen Iris', 'Glen Waverley', 'Glenroy', 'Greensborough', 'Greenvale', 'Grovedale', 'Hadfield', 'Hallam', 'Hamlyn Heights', 'Hampton Park', 'Hastings', 'Hawthorn', 'Healesville', 'Heathcote', 'Heathmont', 'Heidelberg', 'Herne Hill', 'Highett', 'Highton', 'Hoppers Crossing', 'Hughesdale', 'Hurstbridge', 'Inverloch', 'Ivanhoe', 'Kangaroo Flat', 'Kealba', 'Keilor', 'Keilor Downs', 'Kensington', 'Kew', 'Keysborough', 'Kilmore', 'Kilsyth', 'Kings Park', 'Kingsbury', 'Kingsville', 'Knoxfield', 'Koo Wee Rup', 'Korumburra', 'Kyneton', 'Lake Wendouree', 'Lalor', 'Lancefield', 'Langwarrin', 'Lara', 'Laverton', 'Leongatha', 'Leopold', 'Lilydale', 'Longwarry', 'Lower Plenty', 'Lynbrook', 'Lysterfield', 'Macleod', 'Malvern', 'Maribyrnong', 'Mckinnon', 'Meadow Heights', 'Melton', 'Mentone', 'Mernda', 'Mickleham', 'Middle Park', 'Mill Park', 'Mitcham', 'Moe', 'Mont Albert', 'Montmorency', 'Montrose', 'Moonee Ponds', 'Moorabbin', 'Mooroolbark', 'Mordialloc', 'Mornington', 'Mount Clear', 'Mount Eliza', 'Mount Evelyn', 'Mount Martha', 'Mount Waverley', 'Mulgrave', 'Murrumbeena', 'Nagambie', 'Narre Warren', 'Newborough', 'Newcomb', 'Newport', 'Niddrie', 'Noble Park', 'North Melbourne', 'Nunawading', 'Oak Park', 'Oakleigh', 'Ocean Grove', 'Officer', 'Ormond', 'Pakenham', 'Parkdale', 'Parkville', 'Pascoe Vale', 'Patterson Lakes', 'Pearcedale', 'Point Cook', 'Port Melbourne', 'Portarlington', 'Preston', 'Princes Hill', 'Quarry Hill', 'Redan', 'Reservoir', 'Richmond', 'Ringwood', 'Romsey', 'Rosanna', 'Rosebud', 'Rowville', 'Roxburgh Park', 'Rye', 'Sandringham', 'Scoresby', 'Seabrook', 'Seaford', 'Sebastopol', 'Seymour', 'Somerville', 'Sorrento', 'South Melbourne', 'Spotswood', 'Springvale', 'St Albans', 'St Kilda', 'St Leonards', 'Strathdale', 'Strathmore', 'Sunbury', 'Surrey Hills', 'Sydenham', 'Tarneit', 'Taylors Hill', 'Taylors Lakes', 'Templestowe', 'Templestowe Lower', 'Oakleigh East', 'The Basin', 'Thomastown', 'Thornbury', 'Toorak', 'Torquay', 'Trafalgar', 'Travancore', 'Tullamarine', 'Tyabb', 'Upper Ferntree Gully', 'Upwey', 'Vermont', 'Viewbank', 'Wallan', 'Wantirna', 'Warburton', 'Warragul', 'Warrandyte', 'Watsonia', 'Wendouree', 'Werribee', 'West Melbourne', 'Wheelers Hill', 'Whittington', 'Whittlesea', 'Williamstown', 'Winchelsea', 'Windsor', 'Wonthaggi', 'Woodend', 'Yallambie', 'Yarragon', 'Yarraville'];
+            if (!list.includes($('#suburbs').val())) {
+                alert('Enter valid input in location');
+                return false;
+            }
+
+            else {
+                console.log($('#categories').val() + "   Values");
+                if ($('#suburbs').val() == '') { $('#suburbs').val('Melbourne'); }
+                return true;
+            }
+        }
+
+    </script>
+
+}
+

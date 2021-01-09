@@ -1,0 +1,178 @@
+﻿@*@model IEnumerable<IEProjectModifiedDatabase.Models.Suburb_Details>
+
+@{
+    ViewBag.Title = "SuburbDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>SuburbDetails</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Suburb)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CrimeNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rent2br)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rent3br)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rent4br)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RentAverageAll)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Distance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SchoolNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HospitalNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SupermarketNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StationNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ParkNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Suburb_Latitude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Suburb_Longitude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.School_Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone_number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.School_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.School_Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.School_URL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.School_Rating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hospital_Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hospital_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hospital_Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hospital_URL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hospital_Rating)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Suburb)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CrimeNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rent2br)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rent3br)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rent4br)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RentAverageAll)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Distance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SchoolNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HospitalNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SupermarketNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StationNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ParkNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Suburb_Latitude)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Suburb_Longitude)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.School_Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone_number)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.School_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.School_Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.School_URL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.School_Rating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hospital_Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hospital_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hospital_Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hospital_URL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hospital_Rating)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>*@

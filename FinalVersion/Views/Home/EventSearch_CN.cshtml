@@ -1,0 +1,242 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout_CN.cshtml";
+}
+<link rel="stylesheet" href="~/Content/style1.css">
+<style type="text/css">
+    .input::-webkit-calendar-picker-indicator {
+        display: none;
+    }
+
+    .card-img {
+        weight: 900px;
+    }
+
+    #map {
+        height: 400px; /* The height is 400 pixels */
+        width: 100%; /* The width is the width of the web page */
+    }
+
+    .html {
+        visibility: hidden;
+    }
+
+    .form-search-wrap {
+        background: #1e0a3c;
+        width: 100%;
+        border-radius: 0px;
+        padding: 20px;
+    }
+
+    p {
+        margin-top: 0;
+        margin-bottom: 1rem;
+        color: white;
+        font-size: 20px;
+        font-family: Microsoft YaHei;
+    }
+
+    div {
+        font-size: 20px;
+        font-family: Microsoft YaHei;
+    }
+
+    .form-control {
+        height: 43px;
+        border-radius: 0;
+    }
+
+    .btn-primary {
+        color: #212529;
+        background-color: #30e3ca;
+        border-color: #30e3ca;
+    }
+
+    h1 {
+        color: white;
+    }
+
+    .stealth {
+        color: #1e0a3c;
+    }
+
+    .stealthPe {
+        color: #1e0a3c;
+    }
+</style>
+<div class="site-wrap" style="position:relative;z-index:2;">
+    <div id="bgcolor" class="form-search-wrap" data-aos="fade-up" data-aos-delay="200">
+        @using (Html.BeginForm("EventSearch_CN", "Home", FormMethod.Post, new { enctype = "multipart/form-data", onsubmit = "return validateForm()" }))
+        {<div class="row align-items-center">
+                <div class="col-lg-12 mb-4 mb-xl-0 col-xl-3 bgmchange">
+                    <p align="left">时间</p>
+                    <div class="select-wrap">
+                        <div class="col-auto dates">
+                            @*<input type="date" id="start" name="trip-start" value="01-01-2019" min="2019-01-01" max="2019-12-31">*@
+                            <input class="date-picker" name="datePicker" id="datepicker-1" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 mb-4 mb-xl-0 col-xl-3">
+                    <p align="left">地点</p>
+                    <div class="wrap-icon">
+                        @*<span class="icon icon-room"></span>*@
+                        <input style="width:230px" type="text" class="form-control rounded" name="Location" id="locinput" placeholder="输入邮编或城区">
+                    </div>
+
+                </div>
+                <div class="col-lg-12 mb-4 mb-xl-0 col-xl-3">
+                    <p align="left">活动类型</p>
+                    <div class="select-wrap">
+                        @*<span class="icon"><span class="icon-keyboard_arrow_down"></span></span>*@
+                        <select class="form-control rounded" name="categories" id="categories" style="position:relative;z-index:100;">
+                            <option value="115" style="position:relative;z-index:100;">家庭&教育</option>
+                            <option value="104" style="position:relative;z-index:100;">电影&媒体</option>
+                            <option value="120" style="position:relative;z-index:100;">校园活动</option>
+                            <option value="108" style="position:relative;z-index:100;">运动健身</option>
+                            <option value="109" style="position:relative;z-index:100;">旅行&户外</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-xl-2 ml-auto text-right">
+                    <P class="stealthPe">.     </P>
+                    <input style="background-color:#d1410c; color:#fff; border-color:#d1410c;font-size: 20px; font-family: Microsoft YaHei" type="submit" class="btn btn-primary btn-block rounded" value="搜 索">
+                </div>
+
+            </div>
+        }
+    </div>
+</div>
+<div class="site-wrap" style="position:relative;z-index:1;">
+    <div class="site-section">
+        @*<p style="visibility:visible">Showing events from <text id="text-1"></text>, based in <text id="text-2"></text> and are under the category <text id="text-3"></text></p>*@
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="row" id="test2">
+                        @*<div class="col-lg-12">
+                                <div class="d-block d-md-flex listing">
+                                    <a href="javascript:void(0)" class="img d-block" style="background-image: url('images/3.jpg')" id="imageid-1"></a>
+                                    <div class="lh-content">
+                                        <span class="category" id="category-1">Jun 3</span>
+                                        <h3><a href="javascript:void(0)" id="name-1">Swimming</a></h3>
+                                        <address id="desc-1">Don St, Brooklyn, New York</address>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="d-block d-md-flex listing">
+                                    <a href="javascript:void(0)" class="img d-block" style="background-image: url('images/3.jpg')" id="imageid-2"></a>
+                                    <div class="lh-content">
+                                        <span class="category" id="category-2">Jun 3</span>
+                                        <h3><a href="javascript:void(0)" id="name-2">Swimming</a></h3>
+                                        <address id="desc-2">Don St, Brooklyn, New York</address>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="d-block d-md-flex listing">
+                                    <a href="javascript:void(0)" class="img d-block" style="background-image: url('images/3.jpg')" id="imageid-3"></a>
+                                    <div class="lh-content">
+                                        <span class="category" id="category-3">Jun 3</span>
+                                        <h3><a href="javascript:void(0)" id="name-3">Swimming</a></h3>
+                                        <address id="desc-3">Don St, Brooklyn, New York</address>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="d-block d-md-flex listing">
+                                    <a href="javascript:void(0)" class="img d-block" style="background-image: url('images/3.jpg')" id="imageid-4"></a>
+                                    <div class="lh-content">
+                                        <span class="category" id="category-4">Jun 3</span>
+                                        <h3><a href="javascript:void(0)" id="name-4">Swimming</a></h3>
+                                        <address id="desc-4">Don St, Brooklyn, New York</address>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="d-block d-md-flex listing">
+                                    <a href="javascript:void(0)" class="img d-block" style="background-image: url('images/3.jpg')" id="imageid-5"></a>
+                                    <div class="lh-content">
+                                        <span class="category" id="category-5">Jun 3</span>
+                                        <h3><a href="javascript:void(0)" id="name-5">Swimming</a></h3>
+                                        <address id="desc-5">Don St, Brooklyn, New York</address>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="d-block d-md-flex listing">
+                                    <a href="javascript:void(0)" class="img d-block" style="background-image: url('images/3.jpg')" id="imageid-6"></a>
+                                    <div class="lh-content">
+                                        <span class="category" id="category-6">Jun 3</span>
+                                        <h3><a href="javascript:void(0)" id="name-6">Swimming</a></h3>
+                                        <address id="desc-6">Don St, Brooklyn, New York</address>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="d-block d-md-flex listing">
+                                    <a href="javascript:void(0)" class="img d-block" style="background-image: url('images/3.jpg')" id="imageid-7"></a>
+                                    <div class="lh-content">
+                                        <span class="category" id="category-7">Jun 3</span>
+                                        <h3><a href="javascript:void(0)" id="name-7">Swimming</a></h3>
+                                        <address id="desc-7">Don St, Brooklyn, New York</address>
+                                    </div>
+                                </div>
+                            </div>*@
+                    </div>
+                </div>
+                <div class="col-lg-4 ml-auto">
+                    <div class="mb-5">
+                        <div id="map"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var date = '@(ViewBag.date)';
+    var lochope = '@(ViewBag.location)';
+    var category = '@(ViewBag.category)';
+
+</script>
+@Scripts.Render("~/Scripts/eventsearch_cn.js")
+@section Scripts {
+    <script>
+        $(window).on('load', function () {
+            $(".date-picker").datepicker({
+                dateFormat: 'dd-M-yy'
+            });
+            $("#datepicker-1").datepicker("setDate", datetemp1);
+            function mySortFunc(text, input) {
+                return text > input;
+            }
+
+            var input = document.getElementById("locinput");
+            var awesomplete = new Awesomplete(input, {
+
+                sort: mySortFunc,
+                minChars: 1,
+                autoFirst: true,
+                maxItems: 5
+
+            });
+            awesomplete.list = ['Abbotsford', 'Albanvale', 'Albert Park', 'Albion', 'Alexandra', 'Alfredton', 'Alphington', 'Altona', 'Altona Meadows', 'Ardeer', 'Armadale', 'Ascot Vale', 'Ashburton', 'Ashwood', 'Aspendale', 'Aspendale Gardens', 'Avondale Heights', 'Bacchus Marsh', 'Ballan', 'Balwyn', 'Bannockburn', 'Barwon Heads', 'Baxter', 'Bayswater', 'Beaconsfield', 'Beaumaris', 'Belgrave', 'Belmont', 'Bentleigh', 'Berwick', 'Beveridge', 'Bittern', 'Black Rock', 'Blackburn', 'Bonbeach', 'Boronia', 'Box Hill', 'Braybrook', 'Brighton', 'Broadford', 'Broadmeadows', 'Brunswick', 'Bulleen', 'Bundoora', 'Buninyong', 'Burwood', 'Cairnlea', 'Camberwell', 'Campbellfield', 'Canterbury', 'Carlton', 'Carnegie', 'Caroline Springs', 'Carrum Downs', 'Castlemaine', 'Caulfield', 'Chadstone', 'Chelsea', 'Chelsea Heights', 'Cheltenham', 'Clarinda', 'Clayton', 'Clifton Hill', 'Clyde', 'Coburg', 'Collingwood', 'Corio', 'Cowes', 'Craigieburn', 'Cranbourne', 'Creswick', 'Crib Point', 'Croydon', 'Dallas', 'Dandenong', 'Daylesford', 'Deer Park', 'Delacombe', 'Delahey', 'Diamond Creek', 'Diggers Rest', 'Dingley Village', 'Doncaster', 'Donvale', 'Doreen', 'Doveton', 'Dromana', 'Drouin', 'Drysdale', 'Edithvale', 'Elsternwick', 'Eltham', 'Elwood', 'Emerald', 'Endeavour Hills', 'Epping', 'Essendon', 'Euroa', 'Fairfield', 'Fawkner', 'Ferntree Gully', 'Fitzroy', 'Flemington', 'Footscray', 'Forest Hill', 'Frankston', 'Geelong', 'Gisborne', 'Gladstone Park', 'Glen Huntly', 'Glen Iris', 'Glen Waverley', 'Glenroy', 'Greensborough', 'Greenvale', 'Grovedale', 'Hadfield', 'Hallam', 'Hamlyn Heights', 'Hampton Park', 'Hastings', 'Hawthorn', 'Healesville', 'Heathcote', 'Heathmont', 'Heidelberg', 'Herne Hill', 'Highett', 'Highton', 'Hoppers Crossing', 'Hughesdale', 'Hurstbridge', 'Inverloch', 'Ivanhoe', 'Kangaroo Flat', 'Kealba', 'Keilor', 'Keilor Downs', 'Kensington', 'Kew', 'Keysborough', 'Kilmore', 'Kilsyth', 'Kings Park', 'Kingsbury', 'Kingsville', 'Knoxfield', 'Koo Wee Rup', 'Korumburra', 'Kyneton', 'Lake Wendouree', 'Lalor', 'Lancefield', 'Langwarrin', 'Lara', 'Laverton', 'Leongatha', 'Leopold', 'Lilydale', 'Longwarry', 'Lower Plenty', 'Lynbrook', 'Lysterfield', 'Macleod', 'Malvern', 'Maribyrnong', 'Mckinnon', 'Meadow Heights', 'Melton', 'Mentone', 'Mernda', 'Mickleham', 'Middle Park', 'Mill Park', 'Mitcham', 'Moe', 'Mont Albert', 'Montmorency', 'Montrose', 'Moonee Ponds', 'Moorabbin', 'Mooroolbark', 'Mordialloc', 'Mornington', 'Mount Clear', 'Mount Eliza', 'Mount Evelyn', 'Mount Martha', 'Mount Waverley', 'Mulgrave', 'Murrumbeena', 'Nagambie', 'Narre Warren', 'Newborough', 'Newcomb', 'Newport', 'Niddrie', 'Noble Park', 'North Melbourne', 'Nunawading', 'Oak Park', 'Oakleigh', 'Ocean Grove', 'Officer', 'Ormond', 'Pakenham', 'Parkdale', 'Parkville', 'Pascoe Vale', 'Patterson Lakes', 'Pearcedale', 'Point Cook', 'Port Melbourne', 'Portarlington', 'Preston', 'Princes Hill', 'Quarry Hill', 'Redan', 'Reservoir', 'Richmond', 'Ringwood', 'Romsey', 'Rosanna', 'Rosebud', 'Rowville', 'Roxburgh Park', 'Rye', 'Sandringham', 'Scoresby', 'Seabrook', 'Seaford', 'Sebastopol', 'Seymour', 'Somerville', 'Sorrento', 'South Melbourne', 'Spotswood', 'Springvale', 'St Albans', 'St Kilda', 'St Leonards', 'Strathdale', 'Strathmore', 'Sunbury', 'Surrey Hills', 'Sydenham', 'Tarneit', 'Taylors Hill', 'Taylors Lakes', 'Templestowe', 'Templestowe Lower', 'Oakleigh East', 'The Basin', 'Thomastown', 'Thornbury', 'Toorak', 'Torquay', 'Trafalgar', 'Travancore', 'Tullamarine', 'Tyabb', 'Upper Ferntree Gully', 'Upwey', 'Vermont', 'Viewbank', 'Wallan', 'Wantirna', 'Warburton', 'Warragul', 'Warrandyte', 'Watsonia', 'Wendouree', 'Werribee', 'West Melbourne', 'Wheelers Hill', 'Whittington', 'Whittlesea', 'Williamstown', 'Winchelsea', 'Windsor', 'Wonthaggi', 'Woodend', 'Yallambie', 'Yarragon', 'Yarraville'];
+        });
+
+        function validateForm() {
+            var list = ['','Melbourne','Abbotsford', 'Albanvale', 'Albert Park', 'Albion', 'Alexandra', 'Alfredton', 'Alphington', 'Altona', 'Altona Meadows', 'Ardeer', 'Armadale', 'Ascot Vale', 'Ashburton', 'Ashwood', 'Aspendale', 'Aspendale Gardens', 'Avondale Heights', 'Bacchus Marsh', 'Ballan', 'Balwyn', 'Bannockburn', 'Barwon Heads', 'Baxter', 'Bayswater', 'Beaconsfield', 'Beaumaris', 'Belgrave', 'Belmont', 'Bentleigh', 'Berwick', 'Beveridge', 'Bittern', 'Black Rock', 'Blackburn', 'Bonbeach', 'Boronia', 'Box Hill', 'Braybrook', 'Brighton', 'Broadford', 'Broadmeadows', 'Brunswick', 'Bulleen', 'Bundoora', 'Buninyong', 'Burwood', 'Cairnlea', 'Camberwell', 'Campbellfield', 'Canterbury', 'Carlton', 'Carnegie', 'Caroline Springs', 'Carrum Downs', 'Castlemaine', 'Caulfield', 'Chadstone', 'Chelsea', 'Chelsea Heights', 'Cheltenham', 'Clarinda', 'Clayton', 'Clifton Hill', 'Clyde', 'Coburg', 'Collingwood', 'Corio', 'Cowes', 'Craigieburn', 'Cranbourne', 'Creswick', 'Crib Point', 'Croydon', 'Dallas', 'Dandenong', 'Daylesford', 'Deer Park', 'Delacombe', 'Delahey', 'Diamond Creek', 'Diggers Rest', 'Dingley Village', 'Doncaster', 'Donvale', 'Doreen', 'Doveton', 'Dromana', 'Drouin', 'Drysdale', 'Edithvale', 'Elsternwick', 'Eltham', 'Elwood', 'Emerald', 'Endeavour Hills', 'Epping', 'Essendon', 'Euroa', 'Fairfield', 'Fawkner', 'Ferntree Gully', 'Fitzroy', 'Flemington', 'Footscray', 'Forest Hill', 'Frankston', 'Geelong', 'Gisborne', 'Gladstone Park', 'Glen Huntly', 'Glen Iris', 'Glen Waverley', 'Glenroy', 'Greensborough', 'Greenvale', 'Grovedale', 'Hadfield', 'Hallam', 'Hamlyn Heights', 'Hampton Park', 'Hastings', 'Hawthorn', 'Healesville', 'Heathcote', 'Heathmont', 'Heidelberg', 'Herne Hill', 'Highett', 'Highton', 'Hoppers Crossing', 'Hughesdale', 'Hurstbridge', 'Inverloch', 'Ivanhoe', 'Kangaroo Flat', 'Kealba', 'Keilor', 'Keilor Downs', 'Kensington', 'Kew', 'Keysborough', 'Kilmore', 'Kilsyth', 'Kings Park', 'Kingsbury', 'Kingsville', 'Knoxfield', 'Koo Wee Rup', 'Korumburra', 'Kyneton', 'Lake Wendouree', 'Lalor', 'Lancefield', 'Langwarrin', 'Lara', 'Laverton', 'Leongatha', 'Leopold', 'Lilydale', 'Longwarry', 'Lower Plenty', 'Lynbrook', 'Lysterfield', 'Macleod', 'Malvern', 'Maribyrnong', 'Mckinnon', 'Meadow Heights', 'Melton', 'Mentone', 'Mernda', 'Mickleham', 'Middle Park', 'Mill Park', 'Mitcham', 'Moe', 'Mont Albert', 'Montmorency', 'Montrose', 'Moonee Ponds', 'Moorabbin', 'Mooroolbark', 'Mordialloc', 'Mornington', 'Mount Clear', 'Mount Eliza', 'Mount Evelyn', 'Mount Martha', 'Mount Waverley', 'Mulgrave', 'Murrumbeena', 'Nagambie', 'Narre Warren', 'Newborough', 'Newcomb', 'Newport', 'Niddrie', 'Noble Park', 'North Melbourne', 'Nunawading', 'Oak Park', 'Oakleigh', 'Ocean Grove', 'Officer', 'Ormond', 'Pakenham', 'Parkdale', 'Parkville', 'Pascoe Vale', 'Patterson Lakes', 'Pearcedale', 'Point Cook', 'Port Melbourne', 'Portarlington', 'Preston', 'Princes Hill', 'Quarry Hill', 'Redan', 'Reservoir', 'Richmond', 'Ringwood', 'Romsey', 'Rosanna', 'Rosebud', 'Rowville', 'Roxburgh Park', 'Rye', 'Sandringham', 'Scoresby', 'Seabrook', 'Seaford', 'Sebastopol', 'Seymour', 'Somerville', 'Sorrento', 'South Melbourne', 'Spotswood', 'Springvale', 'St Albans', 'St Kilda', 'St Leonards', 'Strathdale', 'Strathmore', 'Sunbury', 'Surrey Hills', 'Sydenham', 'Tarneit', 'Taylors Hill', 'Taylors Lakes', 'Templestowe', 'Templestowe Lower', 'Oakleigh East', 'The Basin', 'Thomastown', 'Thornbury', 'Toorak', 'Torquay', 'Trafalgar', 'Travancore', 'Tullamarine', 'Tyabb', 'Upper Ferntree Gully', 'Upwey', 'Vermont', 'Viewbank', 'Wallan', 'Wantirna', 'Warburton', 'Warragul', 'Warrandyte', 'Watsonia', 'Wendouree', 'Werribee', 'West Melbourne', 'Wheelers Hill', 'Whittington', 'Whittlesea', 'Williamstown', 'Winchelsea', 'Windsor', 'Wonthaggi', 'Woodend', 'Yallambie', 'Yarragon', 'Yarraville'];
+            if (!list.includes($('#locinput').val())) {
+                alert('Enter valid input in location');
+                return false;
+            }
+
+            else {
+                if ($('#locinput').val() == '') { $('#locinput').val('Melbourne'); }
+                return true;
+            }
+        }
+    </script>
+
+}

@@ -1,0 +1,843 @@
+﻿
+@{
+    ViewBag.Title = "Checklist_CN";
+    Layout = "~/Views/Shared/_Layout_CN.cshtml";
+}
+
+<style type="text/css">
+
+    .newH3 {
+        background-image: url('../../images/bg.jpg');
+    }
+
+    .centered {
+        position: absolute;
+        top: 10%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .bigBorder {
+        padding-right: 94px;
+        border-top: 5px solid #082c66;
+        border-bottom: 5px solid #082c66;
+    }
+
+    .ion-icon {
+        font-size: 64px;
+    }
+
+    .fixedBottom {
+        border-bottom: 5px dotted #082c66;
+        font-family: 'Varela Round', sans-serif;
+    }
+
+    .blue {
+        background: #0066cc;
+    }
+
+    input[type='checkbox'] {
+        zoom: 1;
+        transform: scale(2);
+        -ms-transform: scale(2);
+        -webkit-transform: scale(2);
+        -o-transform: scale(2);
+        -moz-transform: scale(2);
+        transform-origin: 0 0;
+        -ms-transform-origin: 0 0;
+        -webkit-transform-origin: 0 0;
+        -o-transform-origin: 0 0;
+        -moz-transform-origin: 0 0;
+        -webkit-transform-origin: 0 0;
+    }
+
+        input[type='checkbox']:checked {
+            background: #abd;
+        }
+
+    h2 {
+        font-size: 1.3em;
+    }
+
+    .btn-info:hover {
+        color: white;
+        background: steelblue;
+    }
+
+    #myProgress {
+        width: 100%;
+        background-color: #ddd;
+    }
+
+    #myBar {
+        width: 10%;
+        height: 30px;
+        background-color: #4CAF50;
+        text-align: center;
+        line-height: 30px;
+        color: white;
+    }
+
+    button.focus {
+        background-color: red;
+    }
+
+    button {
+        border: none;
+        background: none;
+        background-color: #4CAF50 text-transform: uppercase;
+        height: 100%;
+        font-weight: 700;
+        color: black;
+        letter-spacing: 1px;
+        font-size: inherit;
+        transition: all 0.3s;
+        -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        outline: none;
+    }
+
+        button:hover {
+            color: white;
+            background: steelblue;
+        }
+
+    .active {
+        background-color: #5375ad !important;
+    }
+
+    .container {
+        position: relative;
+        font-family: Arial;
+    }
+
+    .text-block {
+        position: absolute;
+        bottom: 100px;
+        right: 20px;
+        background-color: none;
+        color: white;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    /**/ /**/
+    .ready {
+        font-size: 1.5em;
+    }
+</style>
+<div class="container" style="margin-bottom:150px" id="content">
+    <div class="container" style="position:fixed;background-color:#212529; color:black;max-width:100px;margin-left:68%;margin-top:33%;z-index:10" data-html2canvas-ignore="true">
+        <p id="test1" style="color:#f89d13; margin-top:30%;margin-bottom:0; padding-left:30%"></p>
+        <p style="color:#f89d13">完成度</p>
+    </div>
+    <div class="ready"></div>
+    <div class="container" style="max-width:100%;">
+
+        <img src="~/images/bg.jpg" style="width:100%;">
+        <div class="text-block">
+            <p style="font-size:1.8em; color:#fff;  margin-left:7.0%; margin-right:7.0%; margin-bottom:7.0%;  font-family :'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                这个清单涵盖了移民至墨尔本你需要知道并准备的事项，包括出发前的准备以及到达后的定居事项，完成这些事项能让你快速适应墨尔本的生活。
+
+            </p>
+        </div>
+    </div>
+
+    <button id="print">Download PDF</button>
+
+
+    <div class="" style="padding-left: 20%;" id="testaa">
+        <div class="row">
+            <div class="col-lg-3">
+                <button class="w3-button demo" id="btnOUS" onclick="currentDiv(1)" style="background-color: #d0d8e0;">出发前</button>
+            </div>
+            <div class="col-lg-3">
+                <button class="w3-button demo" id="btnchiefdom" onclick="currentDiv(2)" style="background-color: #d0d8e0;">到达墨尔本后</button>
+            </div>
+            <div class="col-lg-3">
+                <button class="w3-button demo" id="btndistrict" onclick="currentDiv(3)" style="background-color: #d0d8e0;">享受墨尔本生活</button>
+            </div>
+        </div>
+    </div>
+    <section class="mySlides" style="max-width: 100%;">
+
+        <div>
+            <h1 class="bigBorder" style="font-size: 2.0em">了解墨尔本</h1>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 5%;"> &nbsp;&nbsp;&nbsp;了解墨尔本生活。</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    小贴士：从 <a href="https://www.visitmelbourne.com/regions/">
+                        visitmelbourne.com
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>了解为何墨尔本是世界上最宜居的城市之一。
+                </p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 5%;"> &nbsp;&nbsp;&nbsp;探索未来在墨尔本可能居住的城区。</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    小贴士：你可以使用<a href="~/Home/place_CN">
+                        love & live
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>来探索墨尔本的城区。
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 5%;"> &nbsp;&nbsp;&nbsp;了解墨尔本就业状况与机会。</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    小贴士：你可以从<a href="~/Home/JobInfo_CN">
+                        找工作信息页
+                    </a><i class="fas fa-external-link-alt"></i>获取关于找工作的有用信息。
+                </p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 5%;"> &nbsp;&nbsp;&nbsp;为你的孩子找到一所合适的学校。</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    小贴士：你可以从<a href=" https://www.study.vic.gov.au/en/Pages/default.aspx">
+                        study.vic.gov
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>了解相关信息，帮助你的孩子适应墨尔本的学习环境
+                </p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 5%;"> &nbsp;&nbsp;&nbsp;初步了解澳洲医疗系统。</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    小贴士：你可以从 <a href="https://www.betterhealth.vic.gov.au/servicesandsupport">
+                        betterhealth.vic.gov
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>了解澳洲医疗相关信息。
+                </p>
+            </div>
+        </div>
+        <div class="row fixedBottom" style="border-bottom: #fff">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 5%;"> &nbsp;&nbsp;&nbsp;计算你的移民预算。</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    小贴士：你可以从<a href="https://www.x-rates.com/">
+                        X-rates
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>得到实时的澳元汇率。
+
+                </p>
+            </div>
+        </div>
+
+        <div align="left">
+            <h1 class="bigBorder" style="font-size: 2.0em; ">房产安排</h1>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 5%;">&nbsp;&nbsp;&nbsp;尽可能还清你的债务。</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px"></p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 5%;">&nbsp;&nbsp;&nbsp;付清所有账单，确保包括水电气在内的所有直接扣款在你离开时都停止。</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px"></p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 5%;">&nbsp;&nbsp;&nbsp;如果需要，将你现在的房产出售或出租。</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    Tip:
+                    1.如果你选择出售你的房产，请提前找好暂时的居所以便提前出售你的房产。
+                    2.如果你选择出租你的房产，请安排好你的租期。
+                </p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 5%;">&nbsp;&nbsp;&nbsp;出售或捐献你不需要的家具。</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">小贴士：你可以在二手网站上出售你的家具，或是寻找当地的捐献渠道。</p>
+            </div>
+        </div>
+        <div class="row fixedBottom" style="border-bottom: #fff">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 5%;">&nbsp;&nbsp;&nbsp;出售你的车（如果有的话）。</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px"></p>
+            </div>
+        </div>
+
+        <br>
+        <div align="left">
+            <h1 class="bigBorder" style="font-size: 2.0em; ">告知相关人员你的移民计划</h1>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 5%;">&nbsp;&nbsp;&nbsp;告知你孩子的学校你的移民计划。</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    小贴士：你需要向学校索要你孩子所有的文档，包括成绩单，以便到澳洲后的学校申请。
+
+                </p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 5%;">&nbsp;&nbsp;&nbsp;告知你的亲朋好友你的移民计划。</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px"></p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 5%;">&nbsp;&nbsp;&nbsp;准备好辞呈并告知你的上司你的移民计划。</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    小贴士：你可以从你的上司那得到一些关于移民后事业规划的建议。
+                </p>
+            </div>
+        </div>
+        <div class="row fixedBottom" style="border-bottom: #fff">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 5%;">&nbsp;&nbsp;&nbsp;检查每个家庭成员的健康状况，从医生那了解需要注意的事项。</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">小贴士：你需要准备好生活必须的药品。</p>
+            </div>
+        </div>
+
+
+        <br>
+        <div align="left">
+            <h1 class="bigBorder" style="font-size: 2.0em; ">最后的准备</h1>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 5%;">&nbsp;&nbsp;&nbsp;从你偏好的城区寻找适合你的房源。</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                </p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 5%;">&nbsp;&nbsp;&nbsp;更新你的个人履历以及求职信息。</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    小贴士：你可以开始着手准备申请到达澳洲后的工作。
+
+                </p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 5%;">&nbsp;&nbsp;&nbsp;更改你的邮箱地址。</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    小贴士：请告知你的银行，上司，亲朋好友，移民局以及其他相关人员你的邮箱地址更新。
+                </p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 5%;">&nbsp;&nbsp;&nbsp;了解携带动物赴澳的相关条款。</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    小贴士：你可以从<a href="http://www.agriculture.gov.au/cats-dogs">
+                        Department of Agriculture and Water Resources
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>了解相关信息。
+                </p>
+            </div>
+        </div>
+
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 5%;">&nbsp;&nbsp;&nbsp;预定好到达墨尔本时暂时的居所。 </h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    小贴士：你可以从以下网站了解相关信息：
+                    <a href="https://www.serviced-apartments.com.au/">
+                        1) Serviced Apartments
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <a href="https://www.serviced-apartments.com.au/">
+                        2) Airbnb Australia
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <a href="https://www.serviced-apartments.com.au/">
+                        3) booking.com
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 5%;">&nbsp;&nbsp;&nbsp;将手提电脑，护照以及相关重要文件放入你随身携带的行李中。 </h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px"></p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 5%;">&nbsp;&nbsp;&nbsp;将你的房子交付给买家或是租客。</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px"></p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 5%;">&nbsp;&nbsp;&nbsp;安排好去当地机场的交通。</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px"></p>
+            </div>
+        </div>
+        <div class="row fixedBottom" style="border-bottom: #fff">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 5%;">&nbsp;&nbsp;&nbsp;和你的亲朋好友道别。 </h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px"></p>
+            </div>
+        </div>
+
+
+
+        <br>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+    <section class="mySlides" style="max-width: 100%;">
+
+        <div>
+            <h1 class="bigBorder" style="font-size: 2.0em">初至墨尔本</h1>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 5%;">&nbsp;&nbsp;&nbsp;让你的亲朋好友知道你已安全到达。</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px"></p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 5%;">&nbsp;&nbsp;&nbsp;在你暂时的居所安顿下来。</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px"></p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 5%;">&nbsp;&nbsp;&nbsp;创建你在澳洲的手机账户。</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    小贴士：澳洲常用的供应商有：<a href="https://www.telstra.com.au/mobile-phones/sim-only-plans">
+                        Telstra
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>、
+                    <a href="https://www.optus.com.au/shop/mobile/phones/sim-only">
+                        Optus
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>、
+                    <a href=" https://www.vodafone.com.au/plans/sim-only">
+                        Vodaphone
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>、
+                    <a href="https://www.virginmobile.com.au/">
+                        Virgin
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 5%;">&nbsp;&nbsp;&nbsp;创建你的银行账户。</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    小贴士：澳洲四大行：
+                    <a href="https://www.commbank.com.au/">
+                        CBA (Commonwealth Bank of Australia)
+                        <<i class="fas fa-external-link-alt"></i>
+                    </a>、
+                    <a href=" https://www.anz.com.au/personal/
+">
+                        ANZ (Australia and NewZealand Banking Group)
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>、
+                    <a href="https://www.nab.com.au/">
+                        NAB (National Australia Bank)
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>、
+                    <a href="https://www.westpac.com.au/">
+                        Westpac (Westpac Banking Corporation)
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </p>
+            </div>
+        </div>
+        <div class="row fixedBottom" style="border-bottom: #fff">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 5%;">&nbsp;&nbsp;&nbsp;申请税号。</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    小贴士：在澳洲，税号（TFN）是十分重要的的个人信息，你在找工作或是收取银行存款利息等纳税相关事项中都需要它。<a href=" https://www.ato.gov.au/individuals/tax-file-number/">
+                        了解更多
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </p>
+            </div>
+        </div>
+
+
+        <div align="left">
+            <h1 class="bigBorder" style="font-size: 2.0em; ">搬进你的新家</h1>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 5%;">&nbsp;&nbsp;&nbsp;搭建水电网。</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    小贴士：你可以从 <a href=" https://housing.vic.gov.au/utilities">
+                        Housing.vic.gov.au website
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>了解相关信息。
+                </p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 5%;">&nbsp;&nbsp;&nbsp;如果需要，你可以购置私家车。</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    小贴士：你需要拥有澳洲驾照，并且注册你的私家车，<a href="https://www.vicroads.vic.gov.au/">
+                        Vicroads
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>提供了相关信息。
+                </p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 5%;">&nbsp;&nbsp;&nbsp;探索当地的公共交通。</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    小贴士：你可以从<a href="https://www.ptv.vic.gov.au/
+">
+                        Public Transport Victoria website
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>了解关于公共交通的相关信息。
+
+                </p>
+            </div>
+        </div>
+        <div class="row fixedBottom" style="border-bottom: #fff">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">了解Myki公交卡(购买, 充值) 和 如何使用.</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    Tip: 访问<a href="https://www.ptv.vic.gov.au/tickets/myki/buy-a-myki-and-top-up/">
+                        Myki的充值和购买
+                    </a><i class="fas fa-external-link-alt"></i> 和 <a href="https://www.ptv.vic.gov.au/footer/customer-service/information-in-other-languages/">
+                        使用Myki
+                    </a><i class="fas fa-external-link-alt"></i>
+                    得到更多信息.
+
+                </p>
+            </div>
+        </div>
+
+
+        <br>
+        <div align="left">
+            <h1 class="bigBorder" style="font-size: 2.0em; ">需要妥善保存的文档</h1>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 5%;">&nbsp;&nbsp;&nbsp;护照</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                </p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 5%;">&nbsp;&nbsp;&nbsp;出生证明</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px"></p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 5%;">&nbsp;&nbsp;&nbsp;个人履历、工作证明</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                </p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 5%;">&nbsp;&nbsp;&nbsp;你孩子的成绩单和学校证明</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px"></p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 5%;">&nbsp;&nbsp;&nbsp;信用证明</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px"></p>
+            </div>
+        </div>
+        <div class="row fixedBottom" style="border-bottom: #fff">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 5%;">&nbsp;&nbsp;&nbsp;保险单</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+
+                </p>
+            </div>
+        </div>
+        <br>
+        <div align="left">
+            <h1 class="bigBorder" style="font-size: 2.0em; ">申请工作</h1>
+        </div>
+
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">定期浏览墨尔本本地的报纸和网站，寻找工作相关信息。</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    小贴士： 我们的<a href="~/Home/JobInfo_CN">
+                        找工作信息页
+                    </a><i class="fas fa-external-link-alt"></i>将给你相关指导。
+                </p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">列举出你想从事的工作。</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                </p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">联系潜在的雇主和招聘中介以获取面试机会。</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="mySlides" style="max-width: 100%;">
+
+        <div>
+            <h1 class="bigBorder" style="font-size: 2.0em">享受墨尔本生活</h1>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 5%;">&nbsp;&nbsp;&nbsp;探索墨尔本有趣的活动。</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    小贴士：你可以从我们的网站了解墨尔本的有趣活动。<a href="~/Home/events_CN">
+                        Love & Live
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 5%;">&nbsp;&nbsp;&nbsp;享受本土食物。</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    小贴士：你可以在 <a href="https://www.goodfood.com.au/">
+                        goodfood.com
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>找到你喜欢的饮食。
+                </p>
+            </div>
+        </div>
+
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 5%;">&nbsp;&nbsp;&nbsp;为你的孩子构建健康食谱。</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    小贴士：这个网站提供了很多儿童健康食谱： <a href=" https://healthy-kids.com.au/parents/">
+                        Healthy kids
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>。
+                </p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 5%;">&nbsp;&nbsp;&nbsp;探索墨尔本的公园和自然保护区。</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    小贴士：这个网站提供了很多墨尔本公园的信息：<a href="https://www.tripadvisor.com.au/Attractions-g255100-Activities-c57-Melbourne_Victoria.html">
+                        tripadvisor.
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>。
+                </p>
+            </div>
+        </div>
+
+    </section>
+
+
+</div>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
+<script type="text/javascript" src="~/Scripts/jspdf.debug.js"></script>
+<script type="text/javascript" src="~/Scripts/html2canvas.js"></script>
+
+<script>
+    $("button").click(function () {
+        $("button").removeClass("active");
+        $(this).addClass("active");
+    });
+
+    var slideIndex = 1;
+    showDivs(slideIndex);
+    var count = 24;
+
+    function plusDivs(n) {
+        showDivs(slideIndex += n);
+    }
+
+    function currentDiv(n) {
+        showDivs(slideIndex = n);
+        $("#test1").text("0/" + count);
+    }
+
+    function showDivs(n) {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("demo");
+        if (n > x.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = x.length }
+        for (i = 0; i < x.length; i++) {
+
+            x[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" w3-red", "");
+        }
+        x[slideIndex - 1].style.display = "block";
+
+        dots[slideIndex - 1].className += " w3-red";
+
+        if (n == 1) { count = 24; }
+        else if (n == 2) {
+            count = 18; document.getElementById("testaa").scrollIntoView();
+        }
+        else {
+            count = 4; document.getElementById("testaa").scrollIntoView();
+        }
+        $("#test1").text("0/" + count);
+        $("input#defaultCheck1:checked").prop('checked', false)
+    }
+
+    $(document).ready(function () {
+
+        // get box count
+        var checked = 0;
+
+        // count checks
+        function countChecked() {
+            checked = $("input#defaultCheck1:checked").length;
+            console.log(checked);
+            var percentage = checked + "/" + count;
+            $("#test1").text(percentage);
+        }
+
+        countChecked();
+        $(":checkbox").click(countChecked);
+    });
+
+    $('#print').click(function () {
+        const filename = 'Checklist.pdf';
+        var w = document.getElementById("content").offsetWidth;
+        var h = document.getElementById("content").offsetHeight;
+        html2canvas(document.getElementById("content"),
+            { scale: 1 }).then(canvas => {
+                var filename1 = '';
+                if (slideIndex == 1) { filename1 = 'Before arriving Checklist.pdf'; }
+                else if (slideIndex == 2) { filename1 = 'After arriving Checklist'; }
+                else { filename1 = 'Enjoying life in Melbourne Checklist.pdf'; }
+                let pdf = new jsPDF('p', 'mm', 'a4');
+                pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 211, 298);
+                pdf.save(filename1);
+            });
+    });
+</script>

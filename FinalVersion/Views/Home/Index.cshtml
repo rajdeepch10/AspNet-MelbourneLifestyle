@@ -1,0 +1,355 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Year', 'Numbers',],
+            ['2011', 93896,],
+            ['2012', 105640,],
+            ['2013', 110108,],
+            ['2014', 120009,],
+            ['2015', 150000,],
+            ['2016', 160652,]
+        ]);
+
+        var options = {
+            title: 'Number of Chinese families immigrating to Victoria from 2011 to 2016',
+            curveType: 'function',
+            legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+    }
+
+
+
+
+
+</script>
+<style>
+    .smallchange {
+        color: black;
+        font-family: 'Lucida Sans', sans-serif;
+    }
+
+    .fontWeight {
+        font-weight: bolder;
+    }
+
+    .site-blocks-cover {
+        height: 450px;
+    }
+
+    #bg_mask {
+    }
+
+    #frontlayer {
+        background-color: #fff;
+        border: 1px solid #fff;
+        text-align: center;
+        height: 1100px; /*height needs to be set*/
+        width: 75%;
+        margin: auto;
+        position: absolute;
+        top: 1500px;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        box-shadow:0 0 5px rgba(85,85,85,0.2)
+    }
+
+    .card-text {
+        font-size: 1.3em;
+    }
+
+    .mySlides {
+        display: none
+    }
+    .text-block {
+        position: absolute;
+        bottom: 35%;
+        color: white;
+        padding-left: 100px;
+        padding-right: 900px;
+        max-width: 1230px;
+    }
+
+    .papa {
+        color: #fff;
+        font-weight: 900;
+    }
+
+    .wrapper {
+        padding-top: 800px;
+        width: 500px;
+        margin: 0 auto;
+    }
+
+    .paragraph {
+        font-size: 1.3em;
+        text-align: center;
+        margin-left: 0%;
+        color: #333;
+        font-family: VIC,Arial,sans-serif;
+    }
+
+    .bigH2 {
+        margin-top: 50px;
+        margin-bottom: 20px;
+        font-weight: 600;
+        color: #045072;
+        font-family: VIC,Arial,sans-serif;
+        padding-left: 100px;
+    }
+
+    h1 {
+        width: 1000px;
+        font-weight: 900;
+        font-size: 4.0rem;
+        font-family: VIC,Arial,sans-serif;
+        color: #fff;
+        
+    }
+
+    .bigH22 {
+        margin-bottom: 1px;
+        padding-left: 40px;
+        color: #045072;
+        font-size: 2.5rem;
+        font-weight: 600;
+        line-height: 52px;
+        line-height: 5.2rem;
+        font-family: VIC,Arial,sans-serif;
+        text-align: center;
+    }
+
+    .card {
+        background-color: #045072;
+    }
+
+    .card-title {
+        color: #fff;
+        font-family: VIC,Arial,sans-serif;
+        font-size: 1.9rem;
+    }
+
+    .card-text {
+        color: #fff;
+        font-family: VIC,Arial,sans-serif;
+        font-size: 1.0rem;
+    }
+
+    .btn-primary {
+        background-color: #fff;
+        border-color: #fff;
+        color: #045072;
+    }
+
+    .w3-content {
+        margin-left: 0;
+        margin-right: 0;
+        max-width: 100%;
+    }
+    .w3-center{
+        left:9%;
+        bottom:20%;
+        cursor:pointer;
+
+    }
+    .dot {
+        cursor: pointer;
+        height: 13px;
+        width: 13px;
+        margin: 0 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+    }
+        .active, .dot:hover {
+            background-color: #fff;
+        }
+
+
+
+</style>
+
+<div id="slide">
+    <div class="mySlides">
+        <img src="~/images/p11.jpg" style="width:100%; height:500px;">
+        <div class="text-block">
+            <br />
+            <h1 class="nowrap">Welcome to Melbourne</h1>
+            <br />
+            <p class="papa" style="width:300px">Things you need to know and prepare before and after arriving</p>
+            <br />
+
+            <a href="@Url.Action("Checklist","Home")" class="btn btn-info"  style="border-color: #fff; background-color: #fff; color: #045072;">Go to Checklist</a>
+
+        </div>
+    </div>
+    <div class="mySlides">
+        <img src="~/images/p13.jpg" style="width:100%; height:500px;">
+        <div class="text-block">
+            <br />
+            <h1 class="nowrap">Explore suburbs</h1>
+            <br />
+            <p class="papa" style="width:350px"> Discover the most livable suburbs with your own preferences</p>
+            <br />
+            
+            <a href="@Url.Action("Place", "Home")" class="btn btn-info" style="border-color: #fff; background-color: #fff; color: #045072;">Explore Suburbs</a>
+
+        </div>
+    </div>
+    <div class="mySlides">
+        <img src="~/images/p12.jpg" style="width:100%; height:500px;">
+        <div class="text-block">
+            <br />
+            <h1 style="width:1000px; font-weight:900;     font-size: 3.9rem;" class="nowrap">What's on in Melbourne</h1>
+            <br />
+            <p class="papa" style="width:300px">Enjoy various events in Melbourne with your family</p>
+            <br />
+
+            <a href="@Url.Action("Events", "Home")" class="btn btn-info" style="border-color: #fff; background-color: #fff; color: #045072;">Find Events</a>
+
+        </div>
+    </div>
+
+    <div class="dotes w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle">
+
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+    </div>
+
+</div>
+
+
+<div id="frontlayer">
+    <div>
+        <h2 class="bigH22">Your gateway to Melbourne</h2>
+        <div class="container" align="center" style="margin-left:10px">
+        <p align="left" style="font-size:large">Melbourne has been ranked as the world's most livable city for seven consecutive years with its superior natural environment, medical benefits, educational resources and infrastructure. Here you will experience the warmth of home and explore exciting things.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">$1,192</h5>
+                    <p class="card-text">Median weekly income of Chinese immigrant family.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">30%</h5>
+                    <p class="card-text">of Chinese immigrants are not well versed in English.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">33 years</h5>
+                    <p class="card-text">
+                        is the average age of Chinese migrants live in Melbourne.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="container" align="center">Data taken from Australian Bureau of Statistics</div>
+    <div class="container" style="padding-left:0px;padding-right:80px; padding-top:50px;">
+        <div class="row">
+
+            <div class="col-lg-6">
+                <div class="card" style="width:500px;">
+                    <img src="~/images/map4.jpeg" class="card-img-top" alt="..." style="height:400px;">
+                    <div class="card-body">
+                        <p class="card-text">31.2% of Australia's Chinese migrants choose to live in Melbourne.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div id="curve_chart" style="width: 565px; height: 465px"></div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>
+
+
+<br />
+<br />
+<script type="text/javascript">
+    var slideIndex = 0;
+    showSlides();
+    var slides,dots;
+
+function showSlides() {
+    var i;
+    slides = document.getElementsByClassName("mySlides");
+    dots = document.getElementsByClassName("dot");
+    for (i = 0; i < slides.length; i++) {
+       slides[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex> slides.length) {slideIndex = 1}
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";
+    dots[slideIndex-1].className += " active";
+    setTimeout(showSlides, 5000); // Change image every 8 seconds
+}
+function plusSlides(position) {
+    slideIndex +=position;
+    if (slideIndex> slides.length) {slideIndex = 1}
+    else if(slideIndex<1){slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+       slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";
+    dots[slideIndex-1].className += " active";
+}
+function currentSlide(index) {
+    if (index> slides.length) {index = 1}
+    else if(index<1){index = slides.length}
+    for (i = 0; i < slides.length; i++) {
+       slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[index-1].style.display = "block";
+    dots[index-1].className += " active";
+}
+</script>
+
+
+
+

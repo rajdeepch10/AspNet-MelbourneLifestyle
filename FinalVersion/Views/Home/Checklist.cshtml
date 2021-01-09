@@ -1,0 +1,817 @@
+﻿
+@{
+    ViewBag.Title = "Checklist";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style type="text/css">
+
+    .newH3 {
+        background-image: url('../../images/bg.jpg');
+    }
+
+    .centered {
+        position: absolute;
+        top: 10%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .bigBorder {
+        padding-right: 94px;
+        border-top: 5px solid #082c66;
+        border-bottom: 5px solid #082c66;
+    }
+
+    .ion-icon {
+        font-size: 64px;
+    }
+
+    .fixedBottom {
+        border-bottom: 5px dotted #082c66;
+        font-family: 'Varela Round', sans-serif;
+    }
+
+    .blue {
+        background: #0066cc;
+    }
+
+    input[type='checkbox'] {
+        zoom: 1;
+        transform: scale(2);
+        -ms-transform: scale(2);
+        -webkit-transform: scale(2);
+        -o-transform: scale(2);
+        -moz-transform: scale(2);
+        transform-origin: 0 0;
+        -ms-transform-origin: 0 0;
+        -webkit-transform-origin: 0 0;
+        -o-transform-origin: 0 0;
+        -moz-transform-origin: 0 0;
+        -webkit-transform-origin: 0 0;
+    }
+
+        input[type='checkbox']:checked {
+            background: #abd;
+        }
+
+    h2 {
+        font-size: 1.2em;
+    }
+
+    .btn-info:hover {
+        color: white;
+        background: steelblue;
+    }
+
+    #myProgress {
+        width: 100%;
+        background-color: #ddd;
+    }
+
+    #myBar {
+        width: 10%;
+        height: 30px;
+        background-color: #4CAF50;
+        text-align: center;
+        line-height: 30px;
+        color: white;
+    }
+
+    button.focus {
+        background-color: red;
+    }
+
+    button {
+        border: none;
+        background: none;
+        background-color: #4CAF50 text-transform: uppercase;
+        height: 100%;
+        font-weight: 700;
+        color: black;
+        letter-spacing: 1px;
+        font-size: inherit;
+        transition: all 0.3s;
+        -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        outline: none;
+    }
+
+        button:hover {
+            color: white;
+            background: steelblue;
+        }
+
+    .active {
+        background-color: #5375ad !important;
+    }
+
+    .container {
+        position: relative;
+        font-family: Arial;
+    }
+
+    .text-block {
+        position: absolute;
+        bottom: 100px;
+        right: 20px;
+        background-color: none;
+        color: white;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    /**/ /**/
+    .ready {
+        font-size: 1.5em;
+    }
+</style>
+<div class="container" style="margin-bottom:150px" id="content">
+    <div class="container" style="position:fixed;background-color:#212529; color:black;max-width:100px;margin-left:68%;margin-top:33%;z-index:10" data-html2canvas-ignore="true">
+        <p id="test1" style="color:#f89d13; margin-top:30%;margin-bottom:0; padding-left:30%"></p>
+        <p style="color:#f89d13">completed</p>
+    </div>
+    <div class="container" style="max-width:100%;">
+
+        <img src="~/images/bg.jpg" style="width:100%;">
+        <div class="text-block">
+            <p style="font-size:1.5em; color:#fff;  margin-left:7.0%; margin-right:7.0%; margin-bottom:7.0%;  font-family :'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                This checklist is a guide that summarizes many things you should prepare and need to do when you immigrant to Melbourne to help you adapt to a new life as quickly as possible. This checklist starts before your departure date and you can use this list at any time.
+
+            </p>
+        </div>
+    </div>
+
+    <button id="print">Save progess as PDF</button>
+
+
+    <div class="" style="padding-left: 20%;" id="testaa">
+        <div class="row">
+            <div class="col-lg-3">
+                <button class="w3-button demo" id="btnOUS" onclick="currentDiv(1)" style="background-color: #d0d8e0;">Before your departure date</button>
+            </div>
+            <div class="col-lg-3">
+                <button class="w3-button demo" id="btnchiefdom" onclick="currentDiv(2)" style="background-color: #d0d8e0;">When you arrive Melbourne</button>
+            </div>
+            <div class="col-lg-3">
+                <button class="w3-button demo" id="btndistrict" onclick="currentDiv(3)" style="background-color: #d0d8e0;">Enjoying your life in Melbourne</button>
+            </div>
+        </div>
+    </div>
+
+    <section class="mySlides" style="max-width: 100%;">
+
+        <div>
+            <h1 class="bigBorder" style="font-size: 1.8em">RESEARCH</h1>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left:5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">Discover Melbourne to get a taste of what life will be like.</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    Tip: Visit the <a href="https://www.visitmelbourne.com/regions/" target="_blank">
+                        visitmelbourne.com
+                    </a><i class="fas fa-external-link-alt"></i> to find out why Melbourne is one of the most livable cities in the world, and it is great lifestyle.
+                </p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">Create a list of possible places to live in Melbourne.</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    Tip: do some online research - the <a href="~/Home/place" target="_blank">
+                        love & live
+                    </a><i class="fas fa-external-link-alt"></i> website is a good place to start.
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">Learn more about job opportunities and business opportunities in Melbourne.</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    Tip: You can check out a lot of information about finding a job. - <a href="~/Home/JobInfo" target="_blank">
+                        You can use our Job Information page.
+                    </a><i class="fas fa-external-link-alt"></i>
+                </p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">Find a new school or childcare provider for your child and register if possible.</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    Tip: <a href=" https://www.study.vic.gov.au/en/Pages/default.aspx" target="_blank">
+                        Explore Melbourne's education system
+                    </a><i class="fas fa-external-link-alt"></i> to help children adapt to Melbourne's learning environment.
+                </p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">Get an initial understanding of Australia's healthcare system.</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    Tip: Visit the <a href=" https://www.betterhealth.vic.gov.au/servicesandsupport" target="_blank">
+                        Health and Welfare section
+                    </a><i class="fas fa-external-link-alt"></i> to learn more about Australia's world leading healthcare.
+                </p>
+            </div>
+        </div>
+        <div class="row fixedBottom" style="border-bottom: #fff">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">Create immigration budget.</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    Tip: Visit <a href="https://www.finder.com.au/aud-cny-exchange-rate" target="_blank">
+                        Finder
+                    </a><i class="fas fa-external-link-alt"></i> for the current exchange rate.
+                </p>
+            </div>
+        </div>
+
+        <div align="left">
+            <h1 class="bigBorder" style="font-size: 1.8em; ">PROPERTY ARRANGEMENTS</h1>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">Pay off your debt as much as possible and consolidate your bank account.</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px"></p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">Pay all bills, cancel your subscription and make sure that any direct debits will be stopped once you move, including electricity, water and gas.</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px"></p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">Prepare your current home for sale or rent, or If it is renting, end the lease.</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    Tip:
+                    1.If you sell your home, find temporary accommodations a backup in case you sell your house sooner than expected.
+                    2.If you rent, please check the notice period required to make a property
+                </p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">Selling or donating unwanted furniture and household items.</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">Tip: visit some used trading websites and post relevant sales advertisement.</p>
+            </div>
+        </div>
+        <div class="row fixedBottom" style="border-bottom: #fff">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">Sell or store your car (if you have)</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px"></p>
+            </div>
+        </div>
+
+        <br>
+        <div align="left">
+            <h1 class="bigBorder" style="font-size: 1.8em; ">COMMUNICATE YOUR PLANS</h1>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">Inform your children's school about your immigration plan.</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    Tip: Request copies of all relevant documentation you might need about your children's education such as transcript.
+
+                </p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">Tell your relatives and friends about your immigration plan.</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px"></p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">Write a letter of resignation and inform your employer about your immigration plan.</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    Tip: You can discuss with your employers about post-immigration career plan and get an advice from them.
+                </p>
+            </div>
+        </div>
+        <div class="row fixedBottom" style="border-bottom: #fff">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">Check all family members' heath and communicate with doctor about any medical condition that may need attention.</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">Tip: Get your medical list from your doctor, and arrange for a sufficient supply of any medicines.</p>
+            </div>
+        </div>
+
+
+        <br>
+        <div align="left">
+            <h1 class="bigBorder" style="font-size: 1.8em; ">FINAL PREPARATION</h1>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">Narrow your search from the list of previously listed homes to find the place you want to live in Melbourne.</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                </p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">Update your curriculum vitae (resume) including employer references.</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    Tip: Start applying for positions via employer and recruitment websites. Follow up by phone if possible.
+
+                </p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">Arrange for your mail to be redirected.</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    Tip: Provide a forwarding address to your bank, migration agent, post office, financial institutions, employer, friends and family, neighbors, and relevant authorities.
+                </p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">Understand the processes associated with transporting animals, such as quarantine, vaccination and related costs. (If you are moving with your pet)</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    Tip: Visit the <a href="http://www.agriculture.gov.au/cats-dogs" target="_blank">
+                        Department of Agriculture and Water Resources
+                    </a><i class="fas fa-external-link-alt"></i>to find out more about bringing pets to Australia.
+                </p>
+            </div>
+        </div>
+
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">Booking temporary accommodation in Melbourne for when you arrive.  </h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    Tip: Visit the temporary accommodation website.
+                    <a href="https://www.serviced-apartments.com.au/" target="_blank">
+                        1) Serviced Apartments
+                    </a><i class="fas fa-external-link-alt"></i>
+                    <a href="https://www.serviced-apartments.com.au/" target="_blank">
+                        2) Airbnb Australia
+                    </a><i class="fas fa-external-link-alt"></i>
+                    <a href="https://www.serviced-apartments.com.au/" target="_blank">
+                        3) booking.com
+                    </a><i class="fas fa-external-link-alt"></i>
+                </p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left:5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">Put laptops, personal documents, passports and important documents into your carry-on bag. </h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom:30px"></p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left:5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">Give your home key to a relative or buyer.</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom:30px"></p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left:5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">Contact the transportation to the domestic airport. </h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom:30px"></p>
+            </div>
+        </div>
+        <div class="row fixedBottom" style="border-bottom: #fff">
+            <div class="col-lg-6">
+                <h2 style="padding-left:5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">Send a message about farewell to relatives and friends. </h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom:30px"></p>
+            </div>
+        </div>
+
+
+
+        <br>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+    <section class="mySlides" style="max-width: 100%;">
+
+        <div>
+            <h1 class="bigBorder" style="font-size: 1.8em">WHEN YOU FIRST ARRIVE</h1>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">Let your family and friends at home know that you have arrived safely.</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom:30px"></p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">Check into your temporary accommodation</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px"></p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">Get a mobile phone account</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    Tip: Check out these service providers :<a href="https://www.telstra.com.au/mobile-phones/sim-only-plans" target="_blank">
+                        Telstra
+                    </a><i class="fas fa-external-link-alt"></i>
+                    <a href="https://www.optus.com.au/shop/mobile/phones/sim-only" target="_blank">
+                        Optus
+                    </a><i class="fas fa-external-link-alt"></i>
+                    <a href=" https://www.vodafone.com.au/plans/sim-only" target="_blank">
+                        Vodaphone
+                    </a><i class="fas fa-external-link-alt"></i>
+                    <a href="https://www.virginmobile.com.au/" target="_blank">
+                        Virgin
+                    </a><i class="fas fa-external-link-alt"></i>
+                </p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">Open a bank account</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    Tip: Top 4 Australia Banks
+                    <a href="https://www.commbank.com.au/" target="_blank">
+                        CBA (Commonwealth Bank of Australia)
+                    </a><i class="fas fa-external-link-alt"></i>
+                    <a href=" https://www.anz.com.au/personal/" target="_blank">
+                        ANZ (Australia and NewZealand Banking Group)
+                    </a><i class="fas fa-external-link-alt"></i>
+                    <a href="https://www.nab.com.au/" target="_blank">
+                        NAB (National Australia Bank)
+                    </a><i class="fas fa-external-link-alt"></i>
+                    <a href="https://www.westpac.com.au/" target="_blank">
+                        Westpac (Westpac Banking Corporation)
+                    </a><i class="fas fa-external-link-alt"></i>
+                </p>
+            </div>
+        </div>
+        <div class="row fixedBottom" style="border-bottom: #fff">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">Apply for a tax file number</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    Tip: Your tax file number (TFN) is an important part of your tax and super records as well as your identity. <a href=" https://www.ato.gov.au/individuals/tax-file-number/" target="_blank">
+                        Explore more
+                    </a><i class="fas fa-external-link-alt"></i>
+                </p>
+            </div>
+        </div>
+
+
+        <div align="left">
+            <h1 class="bigBorder" style="font-size: 1.8em; ">MOVE INTO YOUR NEW HOME</h1>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">Set up utilities such as phone, power, internet and water.</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    Tip: Visit the  <a href=" https://housing.vic.gov.au/utilities" target="_blank">
+                        Housing.vic.gov.au website
+                    </a><i class="fas fa-external-link-alt"></i>
+                    for information about how to connect utilities to your home.
+                </p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">Get your private car if needed.</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    Tip: You'll need a Australian drivers license and car registration, visit  <a href="https://www.vicroads.vic.gov.au/" target="_blank">
+                        Vicroads
+                    </a><i class="fas fa-external-link-alt"></i>
+                    for more information.
+                </p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">Explore public transportation options in your area.</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    Tip: Visit the <a href="https://www.ptv.vic.gov.au/" target="_blank">
+                        Public Transport Victoria website
+                    </a><i class="fas fa-external-link-alt"></i>
+                    for more information.
+
+                </p>
+            </div>
+        </div>
+        <div class="row fixedBottom" style="border-bottom: #fff">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">Learn about Myki card(buying it, top up) and how to use it.</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    Tip: Visit the <a href="https://www.ptv.vic.gov.au/tickets/myki/buy-a-myki-and-top-up/" target="_blank">
+                        Buy and top up Myki
+                    </a><i class="fas fa-external-link-alt"></i> and
+                    <a href="https://www.ptv.vic.gov.au/tickets/myki/travel-with-myki/" target="_blank">
+                        Using Myki
+                    </a><i class="fas fa-external-link-alt"></i>
+                    for more information.
+
+                </p>
+            </div>
+        </div>
+
+
+        <br>
+        <div align="left">
+            <h1 class="bigBorder" style="font-size: 1.8em; ">KEEP IMPORTANT DOCUMENTS WITH YOU</h1>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">Passports.</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                </p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">Birth certificates</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px"></p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">Resume, employment Reference, Qualifications</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                </p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">School reports of your children.</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px"></p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">Credit records.</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px"></p>
+            </div>
+        </div>
+        <div class="row fixedBottom" style="border-bottom: #fff">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">Insurances.</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+
+                </p>
+            </div>
+        </div>
+        <br>
+        <div align="left">
+            <h1 class="bigBorder" style="font-size: 1.8em; ">APPLY FOR A JOB</h1>
+        </div>
+
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">Browse local newspaper or website recruitment information regularly.</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    Tip: You can use our<a href="~/Home/JobInfo" target="_blank">
+                        job information page
+                    </a><i class="fas fa-external-link-alt"></i>
+                </p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">Create a list of jobs you want to work on.</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                </p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">Contact potential employers and recruitment agencies to set up interviews.</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="mySlides" style="max-width: 100%;">
+
+        <div>
+            <h1 class="bigBorder" style="font-size: 1.8em">ENJOY YOUR LIFE IN MELBOURNE</h1>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">Check out events in Melbourne.</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    Tip: You can discover interesting events in Melbourne. <a href="~/Home/Events" target="_blank">
+                        Love & Live
+                    </a><i class="fas fa-external-link-alt"></i>
+                </p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">Enjoy local food.</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    Tip: Visit <a href="https://www.goodfood.com.au/" target="_blank">
+                        goodfood.com
+                    </a><i class="fas fa-external-link-alt"></i>to discover food you like.
+                </p>
+            </div>
+        </div>
+
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">Keep your child recipes healthy .</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    Tip: Check out useful information at  <a href=" https://healthy-kids.com.au/parents/" target="_blank">
+                        Healthy kids
+                    </a><i class="fas fa-external-link-alt"></i>
+                </p>
+            </div>
+        </div>
+        <div class="row fixedBottom">
+            <div class="col-lg-6">
+                <h2 style="padding-left: 5%;"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" style="width: 30px; left: 20px;">Explore parks and natural reserves in Melbourne .</h2>
+            </div>
+            <div class="col-lg-6" style="background-color: #f8faff">
+                <p style="margin-bottom: 30px">
+                    Tip: Discover parks and nature reserves at <a href="https://www.tripadvisor.com.au/Attractions-g255100-Activities-c57-Melbourne_Victoria.html" target="_blank">
+                        tripadvisor.
+                    </a><i class="fas fa-external-link-alt"></i>
+                </p>
+            </div>
+        </div>
+
+    </section>
+
+</div>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
+<script type="text/javascript" src="~/Scripts/jspdf.debug.js"></script>
+<script type="text/javascript" src="~/Scripts/html2canvas.js"></script>
+
+<script>
+    $("button").click(function () {
+        $("button").removeClass("active");
+        $(this).addClass("active");
+    });
+
+    var slideIndex = 1;
+    showDivs(slideIndex);
+    var count = 24;
+
+    function plusDivs(n) {
+        showDivs(slideIndex += n);
+    }
+
+    function currentDiv(n) {
+        showDivs(slideIndex = n);
+        $("#test1").text("0/" + count);
+    }
+
+    function showDivs(n) {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("demo");
+        if (n > x.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = x.length }
+        for (i = 0; i < x.length; i++) {
+
+            x[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" w3-red", "");
+        }
+        x[slideIndex - 1].style.display = "block";
+
+        dots[slideIndex - 1].className += " w3-red";
+
+        if (n == 1) { count = 24; }
+        else if (n == 2) {
+            count = 18; document.getElementById("testaa").scrollIntoView();
+        }
+        else {
+            count = 4; document.getElementById("testaa").scrollIntoView();
+        }
+        $("#test1").text("0/" + count);
+        $("input#defaultCheck1:checked").prop('checked', false)
+    }
+
+    $(document).ready(function () {
+
+        // get box count
+        var checked = 0;
+
+        // count checks
+        function countChecked() {
+            checked = $("input#defaultCheck1:checked").length;
+            var percentage = checked + "/" + count;
+            $("#test1").text(percentage);
+        }
+
+        countChecked();
+        $(":checkbox").click(countChecked);
+    });
+
+    $('#print').click(function () {
+        const filename = 'Checklist.pdf';
+        var w = document.getElementById("content").offsetWidth;
+        var h = document.getElementById("content").offsetHeight;
+        html2canvas(document.getElementById("content"),
+            { scale: 1 }).then(canvas => {
+                var filename1 = '';
+                if (slideIndex == 1) { filename1 = 'Before arriving Checklist.pdf'; }
+                else if (slideIndex == 2) { filename1 = 'After arriving Checklist'; }
+                else { filename1 = 'Enjoying life in Melbourne Checklist.pdf'; }
+                let pdf = new jsPDF('p', 'mm', 'a4');
+                pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 211, 298);
+                pdf.save(filename1);
+            });
+    });
+</script>

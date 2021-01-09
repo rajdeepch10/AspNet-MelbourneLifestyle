@@ -1,0 +1,325 @@
+﻿
+@{
+    ViewBag.Title = "Index_CN";
+    Layout = "~/Views/Shared/_Layout_CN.cshtml";
+}
+
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Year', 'Numbers',],
+            ['2011', 93896,],
+            ['2012', 105640,],
+            ['2013', 110108,],
+            ['2014', 120009,],
+            ['2015', 150000,],
+            ['2016', 160652,]
+        ]);
+
+        var options = {
+            title: '维州2011年至2016年中国家庭移民人数',
+            curveType: 'function',
+            legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+    }
+
+
+
+
+
+</script>
+<style>
+    .smallchange {
+        color: black;
+        font-family: 'Lucida Sans', sans-serif;
+    }
+
+    .fontWeight {
+        font-weight: bolder;
+    }
+
+    .site-blocks-cover {
+        height: 450px;
+    }
+
+    #bg_mask {
+    }
+
+    #frontlayer {
+        background-color: #fff;
+        border: 1px solid #fff;
+        text-align: center;
+        height: 1100px; /*height needs to be set*/
+        width: 75%;
+        margin: auto;
+        position: absolute;
+        top: 1500px;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+
+    .card-text {
+        font-size: 1.3em;
+    }
+
+    .mySlides {
+        display: none
+    }
+
+    .w3-left, .w3-right, .w3-badge {
+        cursor: pointer
+    }
+
+    .w3-badge {
+        height: 13px;
+        width: 13px;
+        padding: 0
+    }
+
+    .text-block {
+        position: absolute;
+        bottom: 150px;
+        color: white;
+        padding-left: 100px;
+        padding-right: 900px;
+        max-width: 1230px;
+    }
+
+    .papa {
+        color: #fff;
+        font-weight: 900;
+    }
+
+    .wrapper {
+        padding-top: 800px;
+        width: 500px;
+        margin: 0 auto;
+    }
+
+    .paragraph {
+        font-size: 1.3em;
+        text-align: center;
+        margin-left: 0%;
+        color: #333;
+        font-family: VIC,Arial,sans-serif;
+    }
+
+    .bigH2 {
+        margin-top: 50px;
+        margin-bottom: 20px;
+        font-weight: 600;
+        color: #045072;
+        font-family: VIC,Arial,sans-serif;
+        padding-left: 100px;
+    }
+
+    h1 {
+        width: 1000px;
+        font-weight: 900;
+        font-size: 4.0rem;
+        font-family: Microsoft YaHei； color: #fff;
+        ;
+    }
+
+    .bigH22 {
+        margin-bottom: 1px;
+        padding-left: 40px;
+        color: #045072;
+        font-size: 2.5rem;
+        font-weight: 600;
+        line-height: 52px;
+        line-height: 5.2rem;
+        font-family: VIC,Arial,sans-serif;
+        text-align: center;
+    }
+
+    .card {
+        background-color: #045072;
+    }
+
+    .card-title {
+        color: #fff;
+        font-family: VIC,Arial,sans-serif;
+        font-size: 1.9rem;
+    }
+
+    .card-text {
+        color: #fff;
+        font-family: VIC,Arial,sans-serif;
+        font-size: 1.0rem;
+    }
+
+    .btn-primary {
+        background-color: #fff;
+        border-color: #fff;
+        color: #045072;
+    }
+
+    .w3-content {
+        margin-left: 0;
+        margin-right: 0;
+        max-width: 100%;
+    }
+
+    .w3-center {
+        left: 9%;
+        bottom: 15%;
+    }
+</style>
+
+<div class="w3-content w3-display-container">
+    <div class="mySlides">
+        <img src="~/images/p11.jpg" style="width:100%; height:500px;">
+        <div class="text-block">
+            <br />
+            <h1 class="nowrap">欢迎来到墨尔本</h1>
+            <br />
+            <p class="papa" style="width:300px;font-family: Microsoft YaHei">临行前以及到达后你需要注意和准备的相关事项</p>
+            <br />
+            <a href="@Url.Action("Checklist_CN", "Home")" class="btn btn-info" style="border-color: #fff; background-color: #fff; color: #045072;font-family: Microsoft YaHei">前往清单</a>
+        </div>
+    </div>
+    <div class="mySlides">
+        <img src="~/images/p13.jpg" style="width:100%; height:500px;">
+        <div class="text-block">
+            <br />
+            <h1 class="nowrap">探索墨尔本城区</h1>
+            <br />
+            <p class="papa" style="width:350px;font-family: Microsoft YaHei">根据你的个人喜好发现最宜居的地区</p>
+            <br />
+            <a href="@Url.Action("Place_CN", "Home")" class="btn btn-info" style="border-color: #fff; background-color: #fff; color: #045072;font-family: Microsoft YaHei">探索城区</a>
+        </div>
+    </div>
+    <div class="mySlides">
+        <img src="~/images/p12.jpg" style="width:100%; height:500px;">
+        <div class="text-block">
+            <br />
+            <h1 style="width:1000px; font-weight:900;     font-size: 3.9rem;" class="nowrap">墨尔本的活动</h1>
+            <br />
+            <p class="papa" style="width:300px;font-family: Microsoft YaHei">和你的家庭一起享受墨尔本丰富多彩的活动</p>
+            <br />
+            <a href="@Url.Action("Events_CN", "Home")" class="btn btn-info" style="border-color: #fff; background-color: #fff; color: #045072;font-family: Microsoft YaHei">现在开始</a>
+        </div>
+    </div>
+
+
+
+    <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle">
+
+        <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(1)"></span>
+        <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(2)"></span>
+        <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(3)"></span>
+    </div>
+
+</div>
+
+
+<div id="frontlayer">
+    <div>
+        <h2 class="bigH22">墨尔本中国家庭概览</h2>
+        <p class="paragraph">墨尔本连续七年被评为全世界最宜居城市之一，凭借的是其优美的环境，丰富的教育、医疗资源和基础设施。墨尔本能让你体会到家一样的温暖，也能给你探索各种新奇事物的机会。</p>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">$1,192</h5>
+                    <p class="card-text">中国移民家庭平均每周的收入。</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">30%</h5>
+                    <p class="card-text">的中国移民家庭英语水平并不高。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">33岁</h5>
+                    <p class="card-text">
+                        墨尔本中国移民的平均年龄。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" style="padding-left:0px;padding-right:80px; padding-top:50px;">
+        <div class="row">
+
+            <div class="col-lg-6">
+                <div class="card" style="width:500px;">
+                    <img src="~/images/map4.jpeg" class="card-img-top" alt="..." style="height:400px;">
+                    <div class="card-body">
+                        <p class="card-text">31.2% 的澳洲中国移民家庭选择移民墨尔本。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div id="curve_chart" style="width: 600px; height: 465px"></div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>
+
+
+<br />
+<br />
+
+
+
+
+
+<script>
+    var slideIndex = 1;
+    showDivs(slideIndex);
+
+    function plusDivs(n) {
+        showDivs(slideIndex += n);
+    }
+
+    function currentDiv(n) {
+        showDivs(slideIndex = n);
+    }
+
+    function showDivs(n) {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("demo");
+        if (n > x.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = x.length }
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" w3-white", "");
+        }
+        x[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " w3-white";
+    }
+
+</script>
+

@@ -1,0 +1,220 @@
+﻿@model IEnumerable<FinalVersion.Models.Housing>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Suburb)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Distance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SchoolNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CrimeNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Buy_Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HospitalNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Latitude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Longitude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rent2br)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rent3br)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rent4br)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RentAverageAll)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Supermarket_No)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BusStop_No)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tram_No)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Train_No)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Transport_No)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Park_No)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NormDistance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NormCrime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NormHospital)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NormSchool)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NormSupermarket)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NormStation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NormPark)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NormRent2br)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NormRent3br)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NormRent4br)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Url)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChinesePopulation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChineseCommunities)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChineseClinics)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Suburb)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Distance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SchoolNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CrimeNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Buy_Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HospitalNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Latitude)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Longitude)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rent2br)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rent3br)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rent4br)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RentAverageAll)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Supermarket_No)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BusStop_No)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tram_No)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Train_No)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Transport_No)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Park_No)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NormDistance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NormCrime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NormHospital)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NormSchool)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NormSupermarket)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NormStation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NormPark)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NormRent2br)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NormRent3br)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NormRent4br)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Url)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChinesePopulation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChineseCommunities)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChineseClinics)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
